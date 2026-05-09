@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@theme {
+  --color-my-green-100: #528e65;
+  --color-my-green-200: #60a386;
+  --color-my-green-300: #70ad98;
+  --color-my-green-400: #84b8aa;
+  --color-my-green-500: #97c3bb;
+  --color-my-green-600: #a7ccc9;
+
+  --color-my-violet-200: #9997c3;
+  --color-my-violet-100: #8987ba;
+
+  --color-my-red-100: #e32636;
+  --color-my-violet-300: #9966cc;
+  --color-my-blue-100: #6a5acd;
+  --color-my-green-700: #8ccb5e;
+
+  --color-my-folder: linear-gradient(
+    to right,
+    rgba(96, 96, 96, 0.3) 0%,
+    rgba(160, 160, 160, 0.2) 50%,
+    rgba(96, 96, 96, 0.3) 100%
+  );
+
+  --color-my-dark-glass: .dark-glass;
+  --color-my-dark-hard-glass: .dark-hard-glass;
+  --color-my-dark-gradient-hard-glass: .dark-gradient-hard-glass;
+
+  @keyframes slide {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  --animate-slide: slide 0.4s ease-out;
+
+  @keyframes slide-out {
+    from {
+      opacity: 0;
+      transform: translateX(0);
+      display: box;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-100%);
+      display: none;
+    }
+  }
+
+  --animate-slide-out: slide-out 0.4s ease-out;
+
+  @keyframes scroll-txt {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-scroll-txt: scroll-txt 4s linear infinite;
+
+  @keyframes load-move {
+    0% {
+      background-position: 200% 0%;
+    }
+    100% {
+      background-position: -200% 0%;
+    }
+  }
+}
+@layer utilities {
+  .load-glass {
+    background: linear-gradient(
+      to right,
+      rgba(96, 96, 96, 0.3) 0%,
+      rgba(160, 160, 160, 0.2) 50%,
+      rgba(96, 96, 96, 0.3) 100%
+    );
+    background-size: 200% 100%;
+    animation: load-move 4s linear infinite;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
+  }
+
+  .dark-glass {
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      5px 5px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+  }
+
+  .dark-soft-glass {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      5px 5px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+  }
+  .dark-hard-glass {
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      5px 5px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+  }
+  .dark-gradient-hard-glass {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.2) 85%,
+      rgba(0, 0, 0, 0.05) 95%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .folder {
+    background: linear-gradient(
+      to right,
+      rgba(96, 96, 96, 0.3) 0%,
+      rgba(160, 160, 160, 0.2) 50%,
+      rgba(96, 96, 96, 0.3) 100%
+    );
+  }
+
+  .custom-scroll {
+    scrollbar-width: none;
+  }
+}

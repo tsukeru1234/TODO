@@ -1,0 +1,31 @@
+# --- Frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# --- Backend ---
+backend/venv/
+backend/.env
+backend/__pycache__/
+backend/*.py[cod]
+backend/db.sqlite3
+backend/media/
+
+# --- Logs & OS ---
+logs
+*.log
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# --- Editor files ---
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
