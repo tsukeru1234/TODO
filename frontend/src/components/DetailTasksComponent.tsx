@@ -5,31 +5,23 @@ interface DetailFolderTypes {
   id: string;
 }
 
-const DetailComponent = ({ id }: DetailFolderTypes) => {
+const DetailTasksComponent = ({ id }: DetailFolderTypes) => {
   const folderDetailData = useFolderDetail(id);
   const priorityColor = (priority: number) => {
-    switch (priority) {
-      case 1:
-        return "bg-my-red-100";
-      case 2:
-        return "bg-my-violet-300";
-      case 3:
-        return "bg-my-blue-100";
-      case 4:
-        return "bg-my-green-700";
-      default:
-        return "bg-my-green-600";
-    }
+    return {
+      bg: `bg-priority-${priority}`,
+      txt: `text-txt-priority-${priority} text-shadow-md text-shadow-txt-shadow-priority-${priority}`,
+    };
   };
   if (!folderDetailData) return;
   const tasks = folderDetailData?.tasks.map((task) => {
-    const bg = priorityColor(task.priority);
+    const { bg, txt } = priorityColor(task.priority);
     return (
       <span
         className="inline-flex justify-between w-full bg-my-green-600/5 rounded-xl pr-2 wrap-anywhere"
         key={task.id}
       >
-        <span className={`${bg} pl-3 pr-2 text-center rounded-l-xl `}>
+        <span className={`${bg} ${txt} pl-3 pr-2 text-center rounded-l-xl `}>
           {task.priority}
         </span>
         <label className="inline-flex justify-between w-full ml-2 text-my-green-100">
@@ -52,4 +44,4 @@ const DetailComponent = ({ id }: DetailFolderTypes) => {
   );
 };
 
-export default DetailComponent;
+export default DetailTasksComponent;

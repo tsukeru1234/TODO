@@ -20,7 +20,7 @@ const CreateTaskComponent = () => {
       >
         <label>
           title
-          <input type="text" name="title" />
+          <input type="text" name="title" className="" />
         </label>
         <label>
           priority
@@ -33,7 +33,9 @@ const CreateTaskComponent = () => {
           />
         </label>
         <button type="submit">{isPending ? "Создание..." : "Создать"}</button>
-        <Link to="..">Отмена</Link>
+        <Link from="/" to={`todo/${id}`}>
+          Отмена
+        </Link>
       </form>
     </>
   );

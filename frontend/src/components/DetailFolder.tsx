@@ -1,13 +1,8 @@
-import { useState, type JSX } from "react";
+import { useState } from "react";
 import { useFolderDetail } from "../api/folders";
 import RenameModal from "./RenameModal";
-import DetailComponent from "./DetailTasksComponent";
-
-interface DetailFolderTypes {
-  id: string;
-  children: JSX.Element;
-  path: string;
-}
+import DetailTasksComponent from "./DetailTasksComponent";
+import type { DetailFolderTypes } from "../@types/types_components";
 
 export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -20,7 +15,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
           {folderDetailData.title}
         </span>
         <div className="w-full flex flex-col gap-2 justify-between text-xl text-emerald-900">
-          <DetailComponent id={id} />
+          <DetailTasksComponent id={id} />
         </div>
         {path.includes("create-task") ? (
           <div className="col-span-5">{children}</div>

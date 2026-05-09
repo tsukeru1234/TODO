@@ -4,16 +4,12 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { getDefaultStore } from "jotai";
 import { accessToken } from "../util/store";
+import type { UserResponse } from "../@types/types_auth";
 
 const store = getDefaultStore();
 
 interface data {
   [k: string]: FormDataEntryValue;
-}
-
-interface UserResponse {
-  login: string;
-  password: string;
 }
 
 export const useRegisterMutation = () => {
