@@ -7,27 +7,34 @@
   --color-my-green-500: #97c3bb;
   --color-my-green-600: #a7ccc9;
 
-  --color-my-violet-400: #eae9f3;
+  --color-my-dub-100: #c09761;
+  --color-my-dub-200: #c7a373;
+  --color-my-dub-300: #cfaf85;
+  --color-my-dub-400: #d6bb98;
+  --color-my-dub-500: #ddc7aa;
+  --color-my-dub-600: #e4d3bc;
+
+  /*  --color-my-violet-400: #605da2;
   --color-my-violet-200: #9997c3;
-  --color-my-violet-100: #8987ba;
+  --color-my-violet-100: #8987ba;*/
 
-  --color-priority-1: #e4717a;
-  --color-priority-2: #efa94a;
-  --color-priority-3: #7fc7ff;
-  --color-priority-4: #77dd77;
-  --color-priority-5: #f3e5f5;
+  --color-priority-1: #ff8fa3;
+  --color-priority-2: #ffccb3;
+  --color-priority-3: #ffe58f;
+  --color-priority-4: #a8e6a3;
+  --color-priority-5: #a9d6ff;
 
-  --color-txt-priority-1: #d93744;
-  --color-txt-priority-2: #cb7d12;
-  --color-txt-priority-3: #1197ff;
-  --color-txt-priority-4: #2cb12c;
-  --color-txt-priority-5: #d29dd9;
+  --color-txt-priority-1: #ee002b;
+  --color-txt-priority-2: #ff8244;
+  --color-txt-priority-3: #ddaa00;
+  --color-txt-priority-4: #3dbb33;
+  --color-txt-priority-5: #118eff;
 
-  --color-txt-shadow-priority-1: #ba232f;
-  --color-txt-shadow-priority-2: #bb7311;
-  --color-txt-shadow-priority-3: #007cdd;
-  --color-txt-shadow-priority-4: #29a329;
-  --color-txt-shadow-priority-5: #c684d0;
+  --color-txt-shadow-priority-1: #aa001e;
+  --color-txt-shadow-priority-2: #dd4900;
+  --color-txt-shadow-priority-3: #aa8300;
+  --color-txt-shadow-priority-4: #2c8624;
+  --color-txt-shadow-priority-5: #0062bb;
 
   --color-my-red-100: #e32636;
   --color-my-violet-300: #9966cc;

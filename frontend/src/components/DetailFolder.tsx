@@ -10,7 +10,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   if (!folderDetailData) return;
   return (
     <>
-      <div className="text-my-violet-200 p-4 grid grid-cols-6 grid-rows-[1fr_15fr_4fr] h-full font-bold gap-2">
+      <div className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[1fr_15fr_4fr] h-full font-bold gap-2">
         <span className="col-span-6 wrap-anywhere text-3xl text-center">
           {folderDetailData.title}
         </span>
@@ -23,7 +23,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
           <div className="col-span-5">прикол</div>
         )}
         <div className="col-span-6 wrap-anywhere flex flex-col gap-2">
-          <hr className="border-dashed border-2 border-my-blue-100" />
+          <hr className="border-dashed border-2 border-my-dub-500" />
           <span>Описание:</span>
           <span className="">{folderDetailData.description}</span>
         </div>
