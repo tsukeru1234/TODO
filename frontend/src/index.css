@@ -104,9 +104,9 @@
   .load-glass {
     background: linear-gradient(
       to right,
-      rgba(96, 96, 96, 0.3) 0%,
-      rgba(160, 160, 160, 0.2) 50%,
-      rgba(96, 96, 96, 0.3) 100%
+      rgba(60, 60, 60, 0.3) 0%,
+      rgba(130, 130, 130, 0.2) 50%,
+      rgba(60, 60, 60, 0.3) 100%
     );
     background-size: 200% 100%;
     animation: load-move 4s linear infinite;

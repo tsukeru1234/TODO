@@ -14,7 +14,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
         <span className="col-span-6 wrap-anywhere text-3xl text-center">
           {folderDetailData.title}
         </span>
-        <div className="w-full flex flex-col gap-2 justify-between text-xl text-emerald-900">
+        <div className="w-full flex flex-col gap-2 justify-between text-xl text-emerald-900 pt-2">
           <DetailTasksComponent id={id} />
         </div>
         {path.includes("create-task") ? (
