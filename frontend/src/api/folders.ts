@@ -5,12 +5,15 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
+import type {
+  folderCreateData,
+  folderData,
+  folderRedact,
+  foldersData,
+} from "../@types/types_folders";
 
-interface foldersData {
-  id: string;
-  task_count: number;
-  progress: number;
-  title: string;
+interface data {
+  [k: string]: FormDataEntryValue;
 }
 
 export const useFoldersGet = () => {
@@ -24,21 +27,6 @@ export const useFoldersGet = () => {
   return data;
 };
 
-interface Tasks {
-  id: string;
-  title: string;
-  priority: number;
-}
-
-interface folderData {
-  id: string;
-  title: string;
-  description: string;
-  progress: number;
-  task_count: number;
-  tasks: Tasks[];
-}
-
 export const useFolderDetail = (id: string) => {
   const { data } = useSuspenseQuery({
     queryKey: ["folder_detail", id],
@@ -49,18 +37,6 @@ export const useFolderDetail = (id: string) => {
   });
   return data;
 };
-
-interface data {
-  [k: string]: FormDataEntryValue;
-}
-
-interface folderCreateData {
-  id: string;
-  title: string;
-  description: string;
-  progress: number;
-  task_count: number;
-}
 
 export const useFoldersMutation = () => {
   const queryClient = useQueryClient();
@@ -81,11 +57,6 @@ export const useFoldersMutation = () => {
     },
   });
 };
-
-interface folderRedact {
-  title: string;
-  description: string;
-}
 
 export const useFolderRedact = (id: string) => {
   const queryClient = useQueryClient();

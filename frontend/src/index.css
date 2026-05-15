@@ -7,8 +7,34 @@
   --color-my-green-500: #97c3bb;
   --color-my-green-600: #a7ccc9;
 
+  --color-my-dub-100: #c09761;
+  --color-my-dub-200: #c7a373;
+  --color-my-dub-300: #cfaf85;
+  --color-my-dub-400: #d6bb98;
+  --color-my-dub-500: #ddc7aa;
+  --color-my-dub-600: #e4d3bc;
+
+  /*  --color-my-violet-400: #605da2;
   --color-my-violet-200: #9997c3;
-  --color-my-violet-100: #8987ba;
+  --color-my-violet-100: #8987ba;*/
+
+  --color-priority-1: #ff8fa3;
+  --color-priority-2: #ffccb3;
+  --color-priority-3: #ffe58f;
+  --color-priority-4: #a8e6a3;
+  --color-priority-5: #a9d6ff;
+
+  --color-txt-priority-1: #ee002b;
+  --color-txt-priority-2: #ff8244;
+  --color-txt-priority-3: #ddaa00;
+  --color-txt-priority-4: #3dbb33;
+  --color-txt-priority-5: #118eff;
+
+  --color-txt-shadow-priority-1: #aa001e;
+  --color-txt-shadow-priority-2: #dd4900;
+  --color-txt-shadow-priority-3: #aa8300;
+  --color-txt-shadow-priority-4: #2c8624;
+  --color-txt-shadow-priority-5: #0062bb;
 
   --color-my-red-100: #e32636;
   --color-my-violet-300: #9966cc;
@@ -78,9 +104,9 @@
   .load-glass {
     background: linear-gradient(
       to right,
-      rgba(96, 96, 96, 0.3) 0%,
-      rgba(160, 160, 160, 0.2) 50%,
-      rgba(96, 96, 96, 0.3) 100%
+      rgba(60, 60, 60, 0.3) 0%,
+      rgba(130, 130, 130, 0.2) 50%,
+      rgba(60, 60, 60, 0.3) 100%
     );
     background-size: 200% 100%;
     animation: load-move 4s linear infinite;

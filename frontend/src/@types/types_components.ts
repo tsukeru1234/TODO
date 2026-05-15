@@ -1,12 +1,27 @@
+import type { JSX } from "react";
+import type { folderData } from "./types_folders";
+
 //props for modal create todo window
-export type propModal = {
+export interface propModal {
   isOpen: boolean;
   onClose: () => void;
-};
+}
 
 //props for modal rename todo window
-export type modalRenProps = {
+export interface modalRenProps {
   id: string;
   isOpen: boolean;
   onClose: () => void;
-};
+}
+
+export interface DetailFolderTypes {
+  id: string;
+  children: JSX.Element;
+  path: string;
+}
+
+export interface RenameModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  data: folderData;
+}
