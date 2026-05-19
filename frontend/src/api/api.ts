@@ -36,7 +36,10 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   // ? перед получением ответа проверка на действенность токена
-  (response) => response,
+  async(response) => {
+    await new Promise(resolve => setTimeout(resolve, 2000)); // 500ms задержка
+    return response;
+  },
   async (error) => {
     const originalRequest = error.config;
 

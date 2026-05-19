@@ -1,6 +1,6 @@
 import { Suspense, type JSX } from "react";
-import FoldersComponent from "../components/FoldersComponent";
-import LoadComponent from "../components/LoadComponent";
+import FoldersComponent from "../components/Folders/FoldersComponent";
+import LoadComponent from "../components/Loaders/LoadComponent";
 
 interface TodoListTypes {
   children: JSX.Element;

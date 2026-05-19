@@ -4,7 +4,7 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 import type {
   folderCreateData,
   folderData,
@@ -27,12 +27,24 @@ export const useFoldersGet = () => {
   return data;
 };
 
+class NotFoundError extends Error {
+  constructor(message: string = 'Папка не найдена') {
+    super(message)
+    this.name = 'NotFoundError'
+  }
+}
+
 export const useFolderDetail = (id: string) => {
   const { data } = useSuspenseQuery({
     queryKey: ["folder_detail", id],
     queryFn: async () => {
-      const { data } = await api.get<folderData>(`/api/folders/${id}/`);
-      return data;
+      const response = await api.get<folderData>(`/api/folders/${id}/`);
+
+      if (response.status === 404) {
+        throw new NotFoundError('Папка не найдена');
+      }
+
+      return response.data;
     },
   });
   return data;
@@ -49,6 +61,7 @@ export const useFoldersMutation = () => {
       );
       return data;
     },
+
     onSuccess: (newFolder) => {
       queryClient.setQueryData<foldersData[]>(["folders"], (old) =>
         old ? [...old, newFolder] : [newFolder],
@@ -92,7 +105,25 @@ export const useFolderRedact = (id: string) => {
           task_count: old?.task_count,
           tasks: old?.tasks,
         };
-      }); //! тут исправь позже типы
+      });
     },
+  });
+};
+
+export const useDeleteFolder = () => {
+  const queryClient = useQueryClient();
+  const router = useRouter()
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const response = await api.delete(`/api/folders/${id}/`);
+      return response.data;
+    },
+    onSuccess: (_, variable) => {
+      const id = variable
+      queryClient.setQueryData(['folders'], (old: foldersData[]) => (old.filter((item) => item.id !== id)))
+      queryClient.removeQueries({ queryKey: ['folder_detail', id] });
+      queryClient.cancelQueries({ queryKey: ['folder_detail', id] });
+      router.navigate({ to: '/todo' })
+    }
   });
 };

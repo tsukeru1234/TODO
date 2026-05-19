@@ -5,7 +5,7 @@ from.models import Tasks, Folders
 class FoldersSerializer(serializers.ModelSerializer): # ? просто для списка папок
     task_count = serializers.IntegerField(default = 0)
     progress = serializers.DecimalField(max_digits=5, decimal_places=2,default = 0.00)
-    description = serializers.CharField()
+    description = serializers.CharField(required=False, allow_blank=True)
     class Meta:
         model = Folders
         fields = ['id', 'title', 'task_count', 'progress', 'description']

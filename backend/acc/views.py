@@ -49,7 +49,7 @@ class CookieTokenView(TokenObtainPairView): # ? при входе создаёт
 
         if refresh_token:
             response.set_cookie(
-                key = settings.SIMPLE_JWT['AUTH_COOKIE'],
+                key = settings.SIMPLE_JWT['REFRESH_COOKIE'],
                 value = refresh_token,
                 httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                 samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE'],

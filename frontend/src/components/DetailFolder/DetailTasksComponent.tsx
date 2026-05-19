@@ -1,5 +1,7 @@
-import { useFolderDetail } from "../api/folders";
+import type { Tasks } from "../../@types/types_tasks";
+import { useFolderDetail } from "../../api/folders";
 import { Link } from "@tanstack/react-router";
+import List from "../List";
 
 interface DetailFolderTypes {
   id: string;
@@ -37,26 +39,28 @@ const DetailTasksComponent = ({ id }: DetailFolderTypes) => {
     }
   };
   if (!folderDetailData) return;
-  const tasks = folderDetailData?.tasks.map((task) => {
-    const { bg, txt } = priorityColor(task.priority);
-    return (
-      <span
-        className="inline-flex justify-between w-full bg-my-green-600/5 rounded-xl pr-2 wrap-anywhere"
-        key={task.id}
-      >
-        <span className={`${bg} ${txt} pl-3 pr-2 text-center rounded-l-xl`}>
-          {task.priority}
-        </span>
-        <label className="inline-flex justify-between w-full ml-2 text-my-green-100">
-          {task.title}
-          <input type="checkbox" />
-        </label>
-      </span>
-    );
-  });
+
   return (
     <>
-      <div className="w-full flex flex-col gap-2">{tasks}</div>
+      <div className="w-full flex flex-col gap-2">
+        <List
+          data={folderDetailData?.tasks}
+          mainClass="inline-flex justify-between w-full bg-my-green-600/5 rounded-xl pr-2 wrap-anywhere"
+          render={(item: Tasks) => {
+            const { bg, txt } = priorityColor(item.priority);
+            return (
+              <>
+                <span className={`${bg} ${txt} pl-3 pr-2 text-center rounded-l-xl`}>
+                  {item.priority}
+                </span>
+                <label className="inline-flex justify-between w-full ml-2 text-my-green-100">
+                  {item.title}
+                  <input type="checkbox" />
+                </label>
+              </>
+            );
+          }}
+        /></div>
       <Link
         to="/todo/$id/create-task"
         className="m-2 bg-my-green-600 shadow-lg shadow-black/40 border-3 border-my-green-100 outline-0 text-my-green-100 rounded-xl text-center transition-all duration-250 hover:scale-102 hover:shadow-xl hover:shadow-my-green-100 hover:pb-1 active:bg-my-green-100 active:text-my-green-500 active:scale-95"
