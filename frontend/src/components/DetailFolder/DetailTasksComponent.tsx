@@ -44,7 +44,7 @@ const DetailTasksComponent = ({ id }: DetailFolderTypes) => {
     <>
       <div className="w-full flex flex-col gap-2">
         <List
-          data={folderDetailData?.tasks}
+          data={folderDetailData?.tasks.sort((a, b) => a.priority - b.priority)}
           mainClass="inline-flex justify-between w-full bg-my-green-600/5 rounded-xl pr-2 wrap-anywhere"
           render={(item: Tasks) => {
             const { bg, txt } = priorityColor(item.priority);
