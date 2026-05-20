@@ -1,8 +1,8 @@
-import type { RenameModalProps } from "../../@types/types_components";
+import type { FolderModalProps } from "../../@types/types_components";
 import { useFolderRedact } from "../../api/folders";
 import ReactDOM from "react-dom";
 
-const RenameModal = ({ isOpen, onClose, data }: RenameModalProps) => {
+const RenameModal = ({ isOpen, onClose, data }: FolderModalProps) => {
   const { mutate, isPending } = useFolderRedact(data.id);
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const RenameModal = ({ isOpen, onClose, data }: RenameModalProps) => {
   return ReactDOM.createPortal(
     <div className="fixed inset-0 min-w-screen min-h-screen dark-glass grid place-content-center text-4xl font-bold">
       <form
-        className="text-my-violet-100 w-200 h-120 bg-my-green-600/20 border-my-green-100 border-4 rounded-2xl p-8 flex flex-col justify-between"
+        className="w-200 h-120 bg-my-green-600/20 border-my-green-100 border-4 rounded-2xl p-8 flex flex-col justify-between"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-3 text-my-green-500">
@@ -63,7 +63,7 @@ const RenameModal = ({ isOpen, onClose, data }: RenameModalProps) => {
         </div>
       </form>
     </div>,
-    document.body,
+    document.body
   );
 };
 
