@@ -37,8 +37,8 @@ class NotFoundError extends Error {
 export const useFolderDetail = (id: string) => {
   const { data } = useSuspenseQuery({
     queryKey: ["folder_detail", id],
-    queryFn: async () => {
-      const response = await api.get<folderData>(`/api/folders/${id}/`);
+    queryFn: async ({ signal }) => {
+      const response = await api.get<folderData>(`/api/folders/${id}/`, { signal });
 
       if (response.status === 404) {
         throw new NotFoundError('Папка не найдена');

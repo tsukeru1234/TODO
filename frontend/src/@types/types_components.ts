@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import type { folderData } from "./types_folders";
 
 //props for modal create todo window
 export interface propModal {
@@ -23,5 +22,4 @@ export interface DetailFolderTypes {
 export interface FolderModalProps {
   isOpen: boolean;
   onClose: () => void;
-  data: folderData;
 }

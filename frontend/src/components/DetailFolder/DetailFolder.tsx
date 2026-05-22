@@ -1,5 +1,5 @@
 import { useFolderDetail } from "../../api/folders";
-import DetailTasksComponent from "./DetailTasksComponent";
+import DetailTasksComponent from "./Tasks/DetailTasksComponent";
 import type { DetailFolderTypes } from "../../@types/types_components";
 import DeleteRename from "./DeleteRename";
 
@@ -8,28 +8,27 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   if (!folderDetailData) return;
   return (
     <>
-      <div className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[1fr_15fr_4fr] h-full font-bold gap-2">
-        <span className="col-span-6 wrap-anywhere text-3xl text-center">
+      <div className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 3xl:gap-4">
+        <span className="col-span-6 wrap-anywhere text-3xl text-center h-full 3xl:text-8xl">
           {folderDetailData.title}
         </span>
-        <div className="w-full flex flex-col gap-2 justify-between text-xl text-emerald-900 pt-2">
+        <div className="w-full h-full flex flex-col gap-2 justify-between text-xl text-my-dub-300 pt-2 min-h-0 3xl:pt-6 3xl:text-6xl">
           <DetailTasksComponent id={id} />
         </div>
         {path.includes("create-task") ? (
-          <div className="col-span-5">{children}</div>
+          <div className="col-span-5 min-h-0 ">{children}</div>
         ) : (
-          <div className="col-span-5 relative">
+          <div className="col-span-5 relative min-h-0">
             Типа график
-            <div className="absolute bottom-0 right-0 rounded-2xl py-3 px-4">
-              <DeleteRename data={folderDetailData} />
+            <div className="absolute bottom-0 right-0 rounded-2xl py-3 px-4 3xl:py-9 3xl:px-12">
+              <DeleteRename id={folderDetailData.id} title={folderDetailData.title} />
             </div>
           </div>
         )}
-        <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full">
-          <hr className="border-dashed border-2 border-my-dub-500" />
+        <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full text-2xl min-h-0 3xl:text-6xl">
+          <hr className="border-dashed border-2 border-my-dub-500 3xl:border-4" />
           <span>Описание:</span>
-          {/* //!адапт дизайн */}
-          <span className="h-34 overflow-auto">
+          <span className="overflow-auto h-full">
             {folderDetailData.description}
           </span>
         </div>

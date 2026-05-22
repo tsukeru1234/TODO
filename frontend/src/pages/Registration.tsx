@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import useRegistrationPage from "../hooks/useRegistrationPage";
+import Button from "../components/Buttons/Button";
 
 const Registration = () => {
   const { isPending, password, setPassword, errors, handleSubmit } =
@@ -8,20 +9,20 @@ const Registration = () => {
   return (
     <>
       <form
-        className="min-h-150 min-w-120 rounded-4xl dark-glass flex flex-col justify-around items-center font-bold pb-6"
+        className="min-h-150 min-w-120 rounded-4xl dark-glass flex flex-col justify-around items-center font-bold pb-6 3xl:min-h-450 3xl:min-w-360 3xl:pb-12"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="flex flex-col gap-3 text-2xl text-my-green-600 items-center justify-end h-full">
-          <div className="flex flex-col text-center text-my-dub-500 text-shadow-my-dub-400 text-shadow-lg text-[55px] pb-4 pt-6">
+        <div className="flex flex-col gap-3 text-2xl text-my-green-600 items-center justify-end h-full 3xl:text-8xl 3xl:w-full">
+          <div className="flex flex-col text-center text-my-dub-500 text-shadow-my-dub-400 text-shadow-lg text-[55px] pb-4 pt-6 3xl:text-[150px] 3xl:pb-8 3xl:pt-12">
             To-do
-            <span className="text-3xl">Регистрация</span>
+            <span className="text-3xl 3xl:text-7xl">Регистрация</span>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col">
-              <div className="flex flex-col">
-                <span className="ml-1 mb-1 text-xl">
+          <div className="flex flex-col gap-2 3xl:m-auto 3xl:gap-6">
+            <div className="flex flex-col 3xl:w-full">
+              <div className="flex flex-col 3xl:w-full">
+                <span className="ml-1 mb-1 text-xl 3xl:text-7xl 3xl:ml-3 3xl:mb-3">
                   Login:
                   {errors?.login && (
                     <span className="text-center text-red-600 text-xl underline ml-2">
@@ -31,7 +32,7 @@ const Registration = () => {
                 </span>
                 <input
                   name="login"
-                  className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100"
+                  className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
                   type="text"
                   placeholder="Ваш login"
                   required
@@ -40,10 +41,10 @@ const Registration = () => {
             </div>
             <div className="flex flex-col gap-1">
               <div className="flex flex-col">
-                <span className="ml-1 text-xl mb-1">Password:</span>
+                <span className="ml-1 text-xl mb-1 3xl:text-7xl 3xl:ml-3 3xl:mb-3">Password:</span>
                 <input
                   name="password"
-                  className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100"
+                  className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
                   type="password"
                   placeholder="Ваш пароль"
                   value={password}
@@ -53,7 +54,7 @@ const Registration = () => {
                   required
                 />
               </div>
-              <div className="flex flex-col text-base ">
+              <div className="flex flex-col text-base 3xl:text-5xl">
                 <span
                   className={`${password.length >= 8 ? "" : "text-red-600"}`}
                 >
@@ -78,26 +79,23 @@ const Registration = () => {
             </div>
           </div>
         </div>
-        <hr className="w-100 text-my-dub-500 border-dashed border-2" />
-        <div className="flex flex-col gap-2">
+        <hr className="w-100 text-my-dub-500 border-dashed border-2 3xl:w-300 3xl:border-6" />
+        <div className="text-3xl flex flex-col gap-2 3xl:gap-6">
           {/[!@#$%^&*()_=+\-=[\]{};':"\\|,.<>/?~]/.test(password) &&
             /[\d]/.test(password) &&
             /[A-Z]/.test(password) &&
             password.length >= 8 && (
-              <button
+              <Button
                 type="submit"
-                className="border-3 rounded-3xl border-my-green-100 bg-my-green-600 text-2xl text-my-green-200 p-1 hover:text-my-green-100 transition-all duration-250 hover:scale-102 hover:shadow-xl hover:shadow-my-green-100 hover:pb-1 active:bg-my-green-100 active:text-my-green-500  active:scale-95"
               >
-                {isPending ? "Регистрация..." : "Зарегестрироваться"}
-              </button>
+                <span>{isPending ? "Регистрация..." : "Зарегестрироваться"}</span>
+              </Button>
             )}
           <div className="flex flex-col">
             <Link
               to="/acc/sing_in"
-              type="button"
-              className="text-2xl px-3 bg-my-dub-600 shadow-lg shadow-black/40 border-3 border-my-dub-100 outline-0 text-my-dub-200 rounded-3xl text-center transition-all duration-250 hover:scale-102 hover:shadow-xl hover:shadow-my-dub-100 hover:pb-1 active:bg-my-dub-100 active:text-my-dub-600 active:scale-95"
             >
-              Назад
+              <Button type="button"><span>Назад</span></Button>
             </Link>
           </div>
         </div>
