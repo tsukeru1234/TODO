@@ -10,14 +10,14 @@ interface DetailFolderTypes {
 }
 
 const DetailTasksComponent = ({ id }: DetailFolderTypes) => {
-  const folderDetailData = useFolderDetail(id);
-  if (!folderDetailData) return;
+  const {data} = useFolderDetail(id);
+  if (!data) return;
 
   return (
     <>
       <div className="w-full flex flex-col gap-2 3xl:gap-4">
         <List
-          data={folderDetailData?.tasks.sort((a, b) => a.priority - b.priority)}
+          data={data?.tasks.sort((a, b) => a.priority - b.priority)}
           mainClass="inline-flex justify-between w-full bg-my-green-600/5 rounded-xl pr-2 wrap-anywhere 3xl:pr-6 3xl:rounded-3xl"
           render={(item: Tasks) => {
             const { bg, txt } = priorityColor(item.priority);
@@ -36,6 +36,7 @@ const DetailTasksComponent = ({ id }: DetailFolderTypes) => {
         /></div>
       <Link
         to="/todo/$id/create-task"
+        className="flex justify-center"
       >
         <Button type="button"><span className="text-xl">Создать задачу</span></Button>
       </Link>

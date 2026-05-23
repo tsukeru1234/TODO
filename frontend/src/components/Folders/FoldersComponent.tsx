@@ -38,6 +38,7 @@ const FoldersComponent = () => {
       <Link
         from="/todo"
         to="create-folder"
+        className="flex justify-center"
       >
         <Button type="button"><span>Создать папку</span></Button>
       </Link>

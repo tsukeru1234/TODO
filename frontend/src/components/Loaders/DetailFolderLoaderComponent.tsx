@@ -26,8 +26,6 @@ const DetailFolderLoaderComponent = () => {
           <div className="load-glass w-full h-full rounded-2xl"></div>
         </div>
         <div className="col-span-6">
-          <hr className="border-dashed border-2 border-my-dub-500 mb-2" />
-          <span>Описание:</span>
           <div className="w-full h-36 rounded-2xl load-glass"></div>
         </div>
       </div>

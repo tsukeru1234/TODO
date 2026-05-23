@@ -36,10 +36,7 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   // ? перед получением ответа проверка на действенность токена
-  async(response) => {
-    await new Promise(resolve => setTimeout(resolve, 2000)); // 500ms задержка
-    return response;
-  },
+  (response) => (response),
   async (error) => {
     const originalRequest = error.config;
 
@@ -55,9 +52,10 @@ api.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
-        console.error("Refresh token expired");
         store.set(accessToken, null);
-
+        if (window.location.pathname !== '/') {
+          window.location.href = '/';
+        }
         return Promise.reject(refreshError);
       }
     }

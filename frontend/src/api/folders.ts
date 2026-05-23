@@ -1,6 +1,7 @@
 import { api } from "./api";
 import {
   useMutation,
+  useQuery,
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
@@ -27,27 +28,21 @@ export const useFoldersGet = () => {
   return data;
 };
 
-class NotFoundError extends Error {
-  constructor(message: string = 'Папка не найдена') {
-    super(message)
-    this.name = 'NotFoundError'
-  }
-}
+// ! проверка отмены запроса const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)) 
 
 export const useFolderDetail = (id: string) => {
-  const { data } = useSuspenseQuery({
+  const { data, isPending } = useQuery({
     queryKey: ["folder_detail", id],
     queryFn: async ({ signal }) => {
+
+      //!  await wait(3000)
+
       const response = await api.get<folderData>(`/api/folders/${id}/`, { signal });
 
-      if (response.status === 404) {
-        throw new NotFoundError('Папка не найдена');
-      }
-
-      return response.data;
+      return response.status === 404 ? null : response.data;
     },
   });
-  return data;
+  return {data, isPending};
 };
 
 export const useFoldersMutation = () => {

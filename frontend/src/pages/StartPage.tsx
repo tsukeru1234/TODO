@@ -15,13 +15,13 @@ export const StartPage = () => {
             <Link
               to="/todo"
             >
-              <Button type="button"><span className="text-3xl">Войти</span></Button>
+              <Button type="button"><span className="text-3xl">Начать</span></Button>
             </Link>
         ) : (
             <Link
               to="acc/sing_in"
             >
-              <Button type="button"><span className="text-3xl">Начать</span></Button>
+              <Button type="button"><span className="text-3xl">Войти</span></Button>
             </Link>
         )}
       </div>
