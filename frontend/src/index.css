@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @theme {
+
+  --breakpoint-3xl: 2560px;
+
   --color-my-green-100: #528e65;
   --color-my-green-200: #60a386;
   --color-my-green-300: #70ad98;
