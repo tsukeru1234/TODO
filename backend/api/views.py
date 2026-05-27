@@ -1,5 +1,5 @@
 from rest_framework import viewsets, status
-from .models import Folders
+from .models import Folders, Tasks
 from .serializers import FolderDetailSerializer, FoldersSerializer, TasksSerializer, FolderRenameSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -30,6 +30,20 @@ class FolderTasksViewSets(viewsets.ModelViewSet):
     def rename(self, request, pk=None):# ? редактирование папки
         folder = self.get_object()
         serializer = FolderRenameSerializer(instance=folder, data = request.data, partial=True)
+
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+        return Response(status=400)
+
+class TasksViewSets(viewsets.ModelViewSet):
+    serializer = TasksSerializer
+    queryset = Tasks.objects.all()
+
+    @action(detail=True, methods=["patch"])
+    def status(self, request, pk=None):
+        task = self.get_object()
+        serializer = TasksSerializer(instance=task, data = request.data, partial=True)
 
         if serializer.is_valid(raise_exception=True):
             serializer.save()

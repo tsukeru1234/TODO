@@ -21,7 +21,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
           {data.title}
         </span>
         <div className="w-full h-full flex flex-col gap-2 justify-between text-xl text-my-dub-300 pt-2 min-h-0 3xl:pt-6 3xl:text-6xl">
-          <DetailTasksComponent id={id} />
+          <DetailTasksComponent detailData={data} />
         </div>
         {path.includes("create-task") ? (
           <div className="col-span-5 min-h-0 ">{children}</div>
