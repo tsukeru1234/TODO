@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @theme {
-
   --breakpoint-3xl: 2560px;
 
   --color-my-green-100: #528e65;
@@ -68,21 +67,6 @@
 
   --animate-slide: slide 0.4s ease-out;
 
-  @keyframes slide-out {
-    from {
-      opacity: 0;
-      transform: translateX(0);
-      display: box;
-    }
-    to {
-      opacity: 1;
-      transform: translateX(-100%);
-      display: none;
-    }
-  }
-
-  --animate-slide-out: slide-out 0.4s ease-out;
-
   @keyframes scroll-txt {
     from {
       transform: translateX(0);
@@ -102,6 +86,93 @@
       background-position: -200% 0%;
     }
   }
+
+  @keyframes open-filter {
+    from {
+      background: rgba(167, 204, 201, 0.05);
+    }
+    to {
+      background: rgba(167, 204, 201, 0.25);
+    }
+  }
+
+  --animate-open-filter: open-filter 0.4s ease-in;
+
+  @keyframes close-filter {
+    from {
+      background: rgba(167, 204, 201, 0.25);
+    }
+    to {
+      background: rgba(167, 204, 201, 0.05);
+    }
+  }
+
+  --animate-close-filter: close-filter 0.45s ease-in;
+
+  @keyframes task-slide {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+      display: box;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      display: none;
+    }
+  }
+
+  --animate-task-slide: task-slide 0.4s ease-in;
+
+  @keyframes filter-com {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  --animate-filter-com: filter-com 1s ease-in;
+
+  @keyframes folder-slide {
+    from {
+      opacity: 0;
+      transform: translateX(3%);
+      display: box;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      display: none;
+    }
+  }
+
+  --animate-folder-slide: folder-slide 0.45s ease-in;
+
+  @keyframes open-creation-window {
+     from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  --animate-open-creation-window: open-creation-window 0.4s ease-in forwards;
+
+  @keyframes open-del-red-window {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  --animate-open-del-red-window: open-del-red-window 0.5 ease-in;
 }
 @layer utilities {
   .load-glass {

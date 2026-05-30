@@ -1,3 +1,6 @@
+import { atom } from "jotai";
+import type { Tasks } from "../../../../@types/types_tasks";
+
 export const priorityColor = (priority: number) => {
     switch (priority) {
       case 1:
@@ -27,3 +30,11 @@ export const priorityColor = (priority: number) => {
         };
     }
   };
+
+export type Filter = 'ALL' | 'READY' | 'NOT_READY'
+
+export const filterStatus = atom<Filter>('ALL')
+
+export const filterTasksData = (data: Tasks[], myStatus: Filter) => {
+  return myStatus === 'ALL' ? data : myStatus === 'READY' ? data.filter((task) => task.ready_status == true) : data.filter((task) => task.ready_status == false)
+}

@@ -22,7 +22,7 @@ class FolderRenameSerializer(serializers.ModelSerializer): # ? редактир�
 class TasksSerializer(serializers.ModelSerializer): # ? задачи
     class Meta:
         model = Tasks
-        fields = ['id', 'title', 'priority']
+        fields = ['id', 'title', 'priority', 'ready_status']
         read_only_fields = ['parent']
 
 class FolderDetailSerializer(serializers.ModelSerializer): # ?детальный просмотр папки 

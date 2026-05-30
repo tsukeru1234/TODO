@@ -68,6 +68,7 @@ class Tasks(models.Model):
     title = models.CharField(max_length=250)
     create_at = models.DateTimeField()
     priority = models.SmallIntegerField(blank=True, null=True)
+    ready_status = models.BooleanField(default=False)
 
     class Meta:
         managed = False
