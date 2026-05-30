@@ -16,7 +16,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
     );
   return (
     <>
-      <div className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 3xl:gap-4">
+      <div key={data.id} className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 animate-folder-slide">
         <span className="col-span-6 wrap-anywhere text-3xl text-center h-full 3xl:text-8xl">
           {data.title}
         </span>

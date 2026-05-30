@@ -14,7 +14,7 @@ const CreateFolder = () => {
   return (
     <>
       <form
-        className="text-3xl text-my-green-500 font-bold grid place-items-center h-full"
+        className="text-3xl text-my-green-500 font-bold grid place-items-center h-full animate-open-creation-window"
         onSubmit={(e) => {
           handleSubmit(e);
         }}

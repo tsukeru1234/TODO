@@ -52,7 +52,7 @@ const SingIn = () => {
           </div>
         </div>
         <hr className="w-100 text-my-dub-500 border-dashed border-2 3xl:w-300 3xl:border-6" />
-        <div className="text-3xl flex flex-col gap-2 3xl:w-full 3xl:gap-6 3xl:px-50">
+        <div className="text-3xl flex flex-col gap-2">
           <Button type="submit">
             <span>{isPending ? "Вход..." : "Войти"}</span>
           </Button>

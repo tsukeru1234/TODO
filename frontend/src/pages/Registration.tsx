@@ -41,7 +41,9 @@ const Registration = () => {
             </div>
             <div className="flex flex-col gap-1">
               <div className="flex flex-col">
-                <span className="ml-1 text-xl mb-1 3xl:text-7xl 3xl:ml-3 3xl:mb-3">Password:</span>
+                <span className="ml-1 text-xl mb-1 3xl:text-7xl 3xl:ml-3 3xl:mb-3">
+                  Password:
+                </span>
                 <input
                   name="password"
                   className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
@@ -80,24 +82,23 @@ const Registration = () => {
           </div>
         </div>
         <hr className="w-100 text-my-dub-500 border-dashed border-2 3xl:w-300 3xl:border-6" />
-        <div className="text-3xl flex flex-col gap-2 3xl:gap-6">
+        <div className="text-3xl flex flex-col gap-2">
           {/[!@#$%^&*()_=+\-=[\]{};':"\\|,.<>/?~]/.test(password) &&
             /[\d]/.test(password) &&
             /[A-Z]/.test(password) &&
             password.length >= 8 && (
-              <Button
-                type="submit"
-              >
-                <span>{isPending ? "Регистрация..." : "Зарегестрироваться"}</span>
+              <Button type="submit">
+                <span>
+                  {isPending ? "Регистрация..." : "Зарегестрироваться"}
+                </span>
               </Button>
             )}
-          <div className="flex flex-col">
-            <Link
-              to="/acc/sing_in"
-            >
-              <Button type="button"><span>Назад</span></Button>
-            </Link>
-          </div>
+
+          <Link to="/acc/sing_in">
+            <Button type="button">
+              <span>Назад</span>
+            </Button>
+          </Link>
         </div>
       </form>
     </>

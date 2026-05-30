@@ -29,7 +29,7 @@ const RenameModal = ({ isOpen, onClose, id }: RenameModalProps) => {
   return ReactDOM.createPortal(
     <div className="fixed inset-0 min-w-screen min-h-screen dark-glass grid place-content-center text-4xl font-bold">
       <form
-        className="w-200 h-120 bg-my-green-600/20 border-my-green-100 border-4 rounded-2xl p-8 flex flex-col justify-between"
+        className="w-200 h-120 bg-my-green-600/20 border-my-green-100 border-4 rounded-2xl p-8 flex flex-col justify-between "
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-3 text-my-green-500">
