@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "./api";
 import { useNavigate } from "@tanstack/react-router";
-import type { folderData } from "../@types/types_folders";
+import type { folderData, foldersData } from "../@types/types_folders";
 import type { Tasks } from "../@types/types_tasks";
 
 interface data {
   [k: string]: FormDataEntryValue;
 }
 export const useCreateTasks = (id: string) => {
-  const queryclient = useQueryClient();
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   return useMutation({
     mutationFn: async (taskData: data) => {
@@ -19,15 +19,37 @@ export const useCreateTasks = (id: string) => {
       return data;
     },
     onSuccess: (newTask) => {
-      queryclient.setQueryData(["folder_detail", id], (old: folderData) => {
+      queryClient.setQueryData(["folder_detail", id], (old: folderData) => {
+        if (!old) return undefined;
+        const newTaskCount = old.task_count + 1;
+        const newProgress: number =
+          newTaskCount > 0
+            ? Number(
+                ((old.ready_tasks / (old.task_count + 1)) * 100).toFixed(2),
+              )
+            : 0.0;
         return {
-          id: old.id,
-          title: old.title,
-          description: old.description,
-          progress: old.progress,
-          task_count: old.task_count,
-          tasks: [...old.tasks, newTask],
+          ...old,
+          progress: newProgress,
+          task_count: newTaskCount,
+          tasks: old.tasks ? [...old.tasks, newTask] : [newTask],
         };
+      });
+      queryClient.setQueryData(["folders"], (old: foldersData[]) => {
+        if (!old) return [];
+        return old.map((folder) => {
+          if (folder.id != id) return folder;
+          const newTaskCount = folder.task_count + 1;
+          const newProgress: number =
+            newTaskCount > 0
+              ? Number(((folder.ready_tasks / newTaskCount) * 100).toFixed(2))
+              : 0.0;
+          return {
+            ...folder,
+            task_count: newTaskCount,
+            progress: newProgress,
+          };
+        });
       });
       navigate({ from: "/", to: `/todo/${id}` });
     },
@@ -50,14 +72,55 @@ export const useStatusTask = (id: string) => {
       return data;
     },
     onSuccess: (updateTaskStatus) => {
-
       queryClient.setQueryData<folderData>(["folder_detail", id], (old) => {
-        if (!old) return old;
+        if (!old) return undefined;
+        const newReadyTasks = updateTaskStatus.ready_status
+          ? old.ready_tasks + 1
+          : old.ready_tasks - 1;
+        const newProgress =
+          old.task_count > 0
+            ? Number(((newReadyTasks / old.task_count) * 100).toFixed(2))
+            : 0;
         return {
           ...old,
-          tasks: old?.tasks.map((task) => task.id === updateTaskStatus.id ? {...updateTaskStatus} : task) ?? [],
-        }}
-      );
+          ready_tasks: newReadyTasks,
+          progress: newProgress,
+          tasks:
+            old?.tasks.map((task) =>
+              task.id === updateTaskStatus.id ? { ...updateTaskStatus } : task,
+            ) ?? [],
+        };
+      });
+      queryClient.setQueryData(["folders"], (old: foldersData[]) => {
+        if (!old) return [];
+        return old.map((folder) => {
+          if (folder.id != id) return folder;
+          const newReadyTasks = updateTaskStatus.ready_status
+            ? folder.ready_tasks + 1
+            : folder.ready_tasks - 1;
+          const newProgress =
+            folder.task_count > 0
+              ? Number(((newReadyTasks / folder.task_count) * 100).toFixed(2))
+              : 0.0;
+          return {
+            ...folder,
+            ready_tasks: newReadyTasks,
+            progress: newProgress,
+          };
+        });
+      });
+    },
+  });
+};
+
+export const useBulkDeleteTasks = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (idTasks: string[]) => {
+      const response = await api.delete("api/tasks/bulk_delete/", {
+        data: { ids: idTasks },
+      });
+      return response
     },
   });
 };
