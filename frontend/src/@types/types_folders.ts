@@ -5,6 +5,7 @@ export interface foldersData {
   task_count: number;
   progress: number;
   title: string;
+  ready_tasks: number;
 }
 
 export interface folderData {
@@ -13,6 +14,7 @@ export interface folderData {
   description: string;
   progress: number;
   task_count: number;
+  ready_tasks: number;
   tasks: Tasks[];
 }
 
@@ -22,6 +24,7 @@ export interface folderCreateData {
   description: string;
   progress: number;
   task_count: number;
+  ready_tasks: number;
 }
 
 export interface folderRedact {

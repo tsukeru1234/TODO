@@ -83,22 +83,17 @@ export const useFolderRedact = (id: string) => {
           old?.map((folder) =>
             folder.id === id
               ? {
-                  id: folder.id,
+                  ...folder,
                   ...updateFolderData,
-                  progress: folder.progress,
-                  task_count: folder.task_count,
                 }
               : { ...folder },
           ) ?? old,
       );
       queryClient.setQueryData<folderData>(["folder_detail", id], (old) => {
-        if (!old) return old;
+        if (!old) return undefined;
         return {
-          id: old?.id,
+          ...old,
           ...updateFolderData,
-          progress: old?.progress,
-          task_count: old?.task_count,
-          tasks: old?.tasks,
         };
       });
     },

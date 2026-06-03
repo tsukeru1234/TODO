@@ -50,11 +50,12 @@ class Users(models.Model):
 class Folders(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user = models.ForeignKey('Users', on_delete=models.CASCADE)
-    task_count = models.IntegerField()
-    progress = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    task_count = models.IntegerField(default=0)
+    progress = models.DecimalField(max_digits=5, decimal_places=2, blank=True, default=0)
     description = models.TextField(null=True)
     create_at = models.DateTimeField(blank=True, null=True)
     title = models.CharField(max_length=150)
+    ready_tasks = models.IntegerField(default=0)
 
     class Meta:
         managed = False
@@ -67,7 +68,7 @@ class Tasks(models.Model):
     user = models.ForeignKey('Users', on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     create_at = models.DateTimeField()
-    priority = models.SmallIntegerField(blank=True, null=True)
+    priority = models.SmallIntegerField(blank=True)
     ready_status = models.BooleanField(default=False)
 
     class Meta:

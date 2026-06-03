@@ -9,6 +9,7 @@ router.register(r'folders', FolderTasksViewSets, basename='folder')
 # ? /folders/$id/add_task - создать задачу в папке
 # ? folders/$id/rename - redact folder
 router.register(r'tasks', TasksViewSets, basename='tasks')
+# ? tasks/bulk_delete удаление несколько сразу
 
 urlpatterns = [
     path('api/', include(router.urls)),

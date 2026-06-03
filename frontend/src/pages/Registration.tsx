@@ -82,7 +82,7 @@ const Registration = () => {
           </div>
         </div>
         <hr className="w-100 text-my-dub-500 border-dashed border-2 3xl:w-300 3xl:border-6" />
-        <div className="text-3xl flex flex-col gap-2">
+        <div className="text-3xl flex flex-col gap-2 items-center">
           {/[!@#$%^&*()_=+\-=[\]{};':"\\|,.<>/?~]/.test(password) &&
             /[\d]/.test(password) &&
             /[A-Z]/.test(password) &&
