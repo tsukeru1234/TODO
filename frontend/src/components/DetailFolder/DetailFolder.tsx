@@ -3,9 +3,20 @@ import DetailTasksComponent from "./Tasks/DetailTasksComponent";
 import type { DetailFolderTypes } from "../../@types/types_components";
 import DeleteRename from "./DeleteRename";
 import DetailFolderLoaderComponent from "../Loaders/DetailFolderLoaderComponent";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
+import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
 
 export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   const { data, isPending } = useFolderDetail(id);
+  const [, setDelStat] = useAtom(deleteStatus);
+  const [, setTasksIdsDelList] = useAtom(idsDelList);
+
+  useEffect(() => {
+    setTasksIdsDelList([]);
+    setDelStat(false);
+  }, [id]);
+
   if (isPending) return <DetailFolderLoaderComponent />;
   if (!data)
     return (
@@ -16,7 +27,10 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
     );
   return (
     <>
-      <div key={data.id} className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 animate-folder-slide">
+      <div
+        key={data.id}
+        className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 animate-folder-slide"
+      >
         <span className="col-span-6 wrap-anywhere text-3xl text-center h-full 3xl:text-8xl">
           {data.title}/{data.task_count}
         </span>

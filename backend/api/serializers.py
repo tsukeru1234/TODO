@@ -3,10 +3,24 @@ from.models import Tasks, Folders
 
 # * True api
 class FoldersSerializer(serializers.ModelSerializer): # ? просто для списка папок
+    description = serializers.CharField(allow_null=True, required=False, allow_blank=True)
     class Meta:
         model = Folders
         fields = ['id', 'title', 'task_count', 'progress', 'description', 'ready_tasks']
-        read_only_fields = ['description', 'ready_tasks', 'task_count', 'progress']
+        read_only_fields = ['ready_tasks', 'task_count', 'progress']
+
+class FoldersList(serializers.ModelSerializer): # ? просто для списка папок
+    class Meta:
+        model = Folders
+        fields = ['id', 'title', 'task_count', 'progress', 'ready_tasks']
+        read_only_fields = ['ready_tasks', 'task_count', 'progress']
+
+class FolderCreateSerializer(serializers.ModelSerializer):
+    description = serializers.CharField(allow_null=True, required=False, allow_blank=True)
+    class Meta:
+        model = Folders
+        fields = ['id', 'title', 'task_count', 'progress', 'ready_tasks', 'description']
+        read_only_fields = ['ready_tasks', 'task_count', 'progress']
         
 class FolderRenameSerializer(serializers.ModelSerializer): # ? редактирование папки
     class Meta:
