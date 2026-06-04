@@ -1,9 +1,6 @@
 from rest_framework import viewsets, status
-from .models import Folders, Tasks
-from django.db import models
 from .serializers import (
     FolderDetailSerializer,
-    FoldersSerializer,
     FoldersList,
     TasksSerializer,
     FolderRenameSerializer,
@@ -11,15 +8,22 @@ from .serializers import (
 )
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .signals import _update_folder_progress
-from .services import folders, folders_ret, get_folder_tasks, create_obj, create_task, update
+from .services.folder_services import (
+    folders,
+    folders_ret,
+    get_folder_tasks,
+    create_obj,
+    create_task,
+)
+from .services.common_services import (
+    update,
+    _update_folder_progress,
+)
+from .services.tasks_services import tasks_qs, bulk_delete_tasks
 from django.forms.models import model_to_dict
 
 
 class FolderTasksViewSets(viewsets.ModelViewSet):
-    queryset = Folders.objects.all()
-    serializer_class = FoldersSerializer
-
     def get_serializer_class(self):  # ? определение сериализатора по запросу
         if self.action == "retrieve":
             return FolderDetailSerializer
@@ -73,9 +77,8 @@ class FolderTasksViewSets(viewsets.ModelViewSet):
         serializer = FolderRenameSerializer(
             instance=folder, data=request.data, partial=True
         )
-        if not serializer.is_valid(raise_exception=True):
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        update(serializer=serializer)
+        serializer.is_valid(raise_exception=True)
+        folder = update(serializer=serializer)
         return Response(FolderDetailSerializer(folder).data)
 
 
@@ -83,17 +86,17 @@ class TasksViewSets(viewsets.ModelViewSet):
     serializer = TasksSerializer
 
     def get_queryset(self):
-        return Tasks.objects.filter(user=self.request.user.id)
+        return tasks_qs(user_id=self.request.user.id)
 
     @action(detail=True, methods=["patch"], url_path="status")
     def status(self, request, pk=None):
         task = self.get_object()
         serializer = TasksSerializer(instance=task, data=request.data, partial=True)
 
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-        return Response(status=400)
+        serializer.is_valid(raise_exception=True)
+        update(serializer)
+        _update_folder_progress(folder_id=task.parent_id)
+        return Response(serializer.data)
 
     @action(detail=False, methods=["delete"], url_path="bulk_delete")
     def bulk_delete(self, request):
@@ -102,18 +105,7 @@ class TasksViewSets(viewsets.ModelViewSet):
             return Response(
                 {"errors": "список не предоставлен"}, status=status.HTTP_400_BAD_REQUEST
             )
-        task = Tasks.objects.get(id=ids[0])
-        folder_ids = list(
-            self.get_queryset()
-            .filter(id__in=ids)
-            .values_list("parent_id", flat=True)
-            .distinct()
+        deleteCount = bulk_delete_tasks(ids=ids, qs=self.get_queryset())
+        return Response(
+            {"ids": ids, "deleteCount": deleteCount}, status=status.HTTP_200_OK
         )
-        deleteCount, _ = self.get_queryset().filter(id__in=ids).delete()
-        Folders.objects.filter(id=task.parent_id).update(
-            task_count=models.F("task_count") - deleteCount,
-        )
-        for folder_id in folder_ids:
-            if folder_id:
-                _update_folder_progress(folder_id)
-        return Response(status=status.HTTP_204_NO_CONTENT)
