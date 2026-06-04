@@ -113,14 +113,28 @@ export const useStatusTask = (id: string) => {
   });
 };
 
-export const useBulkDeleteTasks = () => {
+interface delTasksType {
+  ids: string
+  deleteCount: number
+}
+
+interface idTasksVar {
+  ids: string[]
+}
+
+export const useBulkDeleteTasks = (id: string) => {
   const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: async (idTasks: string[]) => {
-      const response = await api.delete("api/tasks/bulk_delete/", {
+  return useMutation<delTasksType, Error, idTasksVar>({
+    mutationFn: async (idTasks: idTasksVar) => {
+      const { data } = await api.delete("api/tasks/bulk_delete/", {
         data: { ids: idTasks },
       });
-      return response
+      return data
     },
+    onSuccess: (delTasks) => {
+      queryClient.setQueryData(['folder_detail', id], (old: folderData) => {
+        if (!old) return undefined
+      })
+    }
   });
 };
