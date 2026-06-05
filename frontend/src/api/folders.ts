@@ -28,21 +28,22 @@ export const useFoldersGet = () => {
   return data;
 };
 
-// ! проверка отмены запроса const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)) 
+// ! проверка отмены запроса const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const useFolderDetail = (id: string) => {
   const { data, isPending } = useQuery({
     queryKey: ["folder_detail", id],
     queryFn: async ({ signal }) => {
-
       //!  await wait(3000)
 
-      const response = await api.get<folderData>(`/api/folders/${id}/`, { signal });
+      const response = await api.get<folderData>(`/api/folders/${id}/`, {
+        signal,
+      });
 
       return response.status === 404 ? null : response.data;
     },
   });
-  return {data, isPending};
+  return { data, isPending };
 };
 
 export const useFoldersMutation = () => {
@@ -86,7 +87,7 @@ export const useFolderRedact = (id: string) => {
                   ...folder,
                   ...updateFolderData,
                 }
-              : { ...folder },
+              : folder,
           ) ?? old,
       );
       queryClient.setQueryData<folderData>(["folder_detail", id], (old) => {
@@ -102,18 +103,20 @@ export const useFolderRedact = (id: string) => {
 
 export const useDeleteFolder = () => {
   const queryClient = useQueryClient();
-  const router = useRouter()
+  const router = useRouter();
   return useMutation({
     mutationFn: async (id: string) => {
       const response = await api.delete(`/api/folders/${id}/`);
       return response.data;
     },
     onSuccess: (_, variable) => {
-      const id = variable
-      queryClient.setQueryData(['folders'], (old: foldersData[]) => (old.filter((item) => item.id !== id)))
-      queryClient.removeQueries({ queryKey: ['folder_detail', id] });
-      queryClient.cancelQueries({ queryKey: ['folder_detail', id] });
-      router.navigate({ to: '/todo' })
-    }
+      const id = variable;
+      queryClient.setQueryData(["folders"], (old: foldersData[]) =>
+        old.filter((item) => item.id !== id),
+      );
+      queryClient.cancelQueries({ queryKey: ["folder_detail", id] });
+      queryClient.removeQueries({ queryKey: ["folder_detail", id] });
+      router.navigate({ to: "/todo" });
+    },
   });
 };

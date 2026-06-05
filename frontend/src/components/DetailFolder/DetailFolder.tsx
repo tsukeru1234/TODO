@@ -15,7 +15,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   useEffect(() => {
     setTasksIdsDelList([]);
     setDelStat(false);
-  }, [id]);
+  }, [id, setTasksIdsDelList, setDelStat]);
 
   if (isPending) return <DetailFolderLoaderComponent />;
   if (!data)

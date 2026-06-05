@@ -40,16 +40,13 @@ const CreateFolder = () => {
             />
           </label>
           <div className="flex justify-end gap-4">
-            <Button
-              type="submit"
-            >
+            <Button type="submit">
               <span>{isPending ? "В процессе..." : "Создать"}</span>
             </Button>
-            <Link
-              from="/"
-              to="/todo"
-            >
-              <DangerButton type="button"><span>Назад</span></DangerButton>
+            <Link from="/" to="/todo">
+              <DangerButton type="button">
+                <span>Назад</span>
+              </DangerButton>
             </Link>
           </div>
         </div>

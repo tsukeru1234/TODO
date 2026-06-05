@@ -19,8 +19,10 @@ const FoldersComponent = () => {
             return (
               <div className="w-full flex items-center gap-1">
                 <span className="inline-flex justify-between w-full bg-my-dub-600/5 rounded-xl px-2 py-1 wrap-anywhere overflow-hidden relative">
-                  <div className='absolute left-0 top-0 h-full transition-all rounded-r-2xl duration-1000 ease-in-out bg-my-dub-600/10 z-10'
-                  style={{width: `${item.progress}%`}}></div>
+                  <div
+                    className="absolute left-0 top-0 h-full transition-all rounded-r-2xl duration-1000 ease-in-out bg-my-dub-600/10 z-10"
+                    style={{ width: `${item.progress}%` }}
+                  ></div>
                   <Link
                     to="/todo/$id"
                     params={{ id: item.id }}
@@ -35,18 +37,18 @@ const FoldersComponent = () => {
                     )}
                   </Link>
                 </span>
-                <span className="text-base w-22 text-center">{Number(item.progress).toFixed(2)}%</span>
+                <span className="text-base w-22 text-center">
+                  {Number(item.progress).toFixed(2)}%
+                </span>
               </div>
             );
           }}
         />
       </div>
-      <Link
-        from="/todo"
-        to="create-folder"
-        className="flex justify-center"
-      >
-        <Button type="button"><span>Создать папку</span></Button>
+      <Link from="/todo" to="create-folder" className="flex justify-center">
+        <Button type="button">
+          <span>Создать папку</span>
+        </Button>
       </Link>
     </>
   );

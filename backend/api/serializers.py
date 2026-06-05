@@ -30,6 +30,12 @@ class TasksSerializer(serializers.ModelSerializer): # ? задачи
         fields = ['id', 'title', 'priority', 'ready_status']
         read_only_fields = ['parent']
 
+class TasksUpdateStatusSerializer(serializers.ModelSerializer): # ? задачи
+    class Meta:
+        model = Tasks
+        fields = ['id', 'ready_status']
+        read_only_fields = ['parent']
+
 class FolderDetailSerializer(serializers.ModelSerializer): # ?детальный просмотр папки 
     tasks = TasksSerializer(many=True, read_only=True)
 

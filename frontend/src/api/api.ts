@@ -36,7 +36,7 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   // ? перед получением ответа проверка на действенность токена
-  (response) => (response),
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
@@ -53,8 +53,8 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (refreshError) {
         store.set(accessToken, null);
-        if (window.location.pathname !== '/') {
-          window.location.href = '/';
+        if (window.location.pathname !== "/") {
+          window.location.href = "/";
         }
         return Promise.reject(refreshError);
       }

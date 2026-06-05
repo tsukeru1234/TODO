@@ -5,6 +5,7 @@ from .serializers import (
     TasksSerializer,
     FolderRenameSerializer,
     FolderCreateSerializer,
+    TasksUpdateStatusSerializer,
 )
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -79,7 +80,7 @@ class FolderTasksViewSets(viewsets.ModelViewSet):
         )
         serializer.is_valid(raise_exception=True)
         folder = update(serializer=serializer)
-        return Response(FolderDetailSerializer(folder).data)
+        return Response(FolderRenameSerializer(folder).data)
 
 
 class TasksViewSets(viewsets.ModelViewSet):
@@ -91,7 +92,9 @@ class TasksViewSets(viewsets.ModelViewSet):
     @action(detail=True, methods=["patch"], url_path="status")
     def status(self, request, pk=None):
         task = self.get_object()
-        serializer = TasksSerializer(instance=task, data=request.data, partial=True)
+        serializer = TasksUpdateStatusSerializer(
+            instance=task, data=request.data, partial=True
+        )
 
         serializer.is_valid(raise_exception=True)
         update(serializer)
@@ -105,7 +108,7 @@ class TasksViewSets(viewsets.ModelViewSet):
             return Response(
                 {"errors": "список не предоставлен"}, status=status.HTTP_400_BAD_REQUEST
             )
-        deleteCount = bulk_delete_tasks(ids=ids, qs=self.get_queryset())
+        serviceResponse = bulk_delete_tasks(ids=ids, qs=self.get_queryset())
         return Response(
-            {"ids": ids, "deleteCount": deleteCount}, status=status.HTTP_200_OK
+            {"ids": ids, "deleteCount": serviceResponse["delete_count"], "ready_tasks_delete": serviceResponse["ready_tasks_delete"]}, status=status.HTTP_200_OK
         )

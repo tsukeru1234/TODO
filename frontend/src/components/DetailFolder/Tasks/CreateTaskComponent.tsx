@@ -42,16 +42,13 @@ const CreateTaskComponent = () => {
             />
           </label>
           <div className="flex justify-end gap-4">
-            <Button
-              type="submit"
-            >
+            <Button type="submit">
               <span>{isPending ? "Создание..." : "Создать"}</span>
             </Button>
-            <Link
-              from="/"
-              to={`todo/${id}`}
-            >
-              <DangerButton type="button"><span>Отмена</span></DangerButton>
+            <Link from="/" to={`todo/${id}`}>
+              <DangerButton type="button">
+                <span>Отмена</span>
+              </DangerButton>
             </Link>
           </div>
         </div>

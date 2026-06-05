@@ -19,11 +19,15 @@ const DetailTasksComponent = ({ detailData }: DetailFolderTypes) => {
       <div className="w-full flex flex-col overflow-auto h-full">
         <FilteredReadyStatus data={detailData} />
       </div>
-      {delStat ? (<DeleteTasksButton id={detailData.id} />) : (<Link to="/todo/$id/create-task" className="flex justify-center">
-        <Button type="button">
-          <span className="text-xl">Создать задачу</span>
-        </Button>
-      </Link>)}
+      {delStat ? (
+        <DeleteTasksButton id={detailData.id} />
+      ) : (
+        <Link to="/todo/$id/create-task" className="flex justify-center">
+          <Button type="button">
+            <span className="text-xl">Создать задачу</span>
+          </Button>
+        </Link>
+      )}
     </>
   );
 };
