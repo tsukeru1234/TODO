@@ -11,19 +11,17 @@ const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
       render={(item: Tasks) => {
         const { bg, txt } = priorityColor(item.priority);
         const handleAdd = () => {
-          setTasksIdsDelList((prev) => prev ? [...prev, item.id] : [item.id]);
-          console.log(`add -- ${item.id}`)
-          console.log(idsTasksDelList)
+          setTasksIdsDelList((prev) => (prev ? [...prev, item.id] : [item.id]));
         };
         const handleRemove = () => {
-            setTasksIdsDelList((prev) => prev.filter((id) => id !== item.id))
-            console.log(`remove -- ${item.id}`)
-            console.log(idsTasksDelList)
-        }
+          setTasksIdsDelList((prev) => prev.filter((id) => id !== item.id));
+        };
         return (
           <button
-            onClick={idsTasksDelList.includes(item.id) ? handleRemove : handleAdd}
-            className={`${item.ready_status ? "inline-flex justify-between w-full bg-my-green-600/5 text-my-green-200 rounded-xl wrap-anywhere text-[22px] relative" : "inline-flex justify-between w-full bg-my-green-600/15 text-my-dub-500 rounded-xl wrap-anywhere text-[22px]"}`}
+            onClick={
+              idsTasksDelList.includes(item.id) ? handleRemove : handleAdd
+            }
+            className={`${item.ready_status ? `inline-flex justify-between w-full ${idsTasksDelList.includes(item.id) ? "bg-my-red-100/35 shadow-md shadow-my-red-100/60" : "bg-my-green-600/5"} text-my-green-200 rounded-xl wrap-anywhere text-[22px] relative` : `inline-flex justify-between w-full ${idsTasksDelList.includes(item.id) ? "bg-my-red-100/35 shadow-md shadow-my-red-100/60" : "bg-my-green-600/15"} text-my-dub-500 rounded-xl wrap-anywhere text-[22px]`}`}
           >
             <span
               className={
@@ -36,8 +34,18 @@ const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
             </span>
             <div className="inline-flex justify-between items-center w-full ml-2 ">
               <span>{item.title}</span>
-              <div className={item.ready_status ? "bg-my-green-700/20 h-full rounded-xl w-10 text-2xl text-center text-txt-priority-4 text-shadow-md text-shadow-txt-shadow-priority-4" : "w-10 text-2xl text-center bg-my-red-100/35 h-full rounded-xl text-txt-priority-1 text-shadow-md text-shadow-txt-shadow-priority-1"}>
-                {item.ready_status ? "✓" : "✗"}
+              <div
+                className={
+                  item.ready_status
+                    ? " h-full rounded-xl w-20 text-2xl text-center text-txt-priority-4 text-shadow-md text-shadow-txt-shadow-priority-4 flex justify-end"
+                    : "w-20 text-2xl text-center bg-my-green-600/10 h-full rounded-xl text-txt-priority-1 text-shadow-md text-shadow-txt-shadow-priority-1"
+                }
+              >
+                <div
+                  className={`w-10 rounded-xl ${item.ready_status ? "bg-my-green-700/20 mr-0" : "bg-my-red-100/35 mr-10"}`}
+                >
+                  {item.ready_status ? "✓" : "✗"}
+                </div>
               </div>
             </div>
           </button>

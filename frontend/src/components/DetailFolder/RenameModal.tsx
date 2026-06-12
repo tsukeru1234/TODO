@@ -53,21 +53,16 @@ const RenameModal = ({ isOpen, onClose, id }: RenameModalProps) => {
           </label>
         </div>
         <div className="flex gap-5 justify-end">
-          <Button
-            type="submit"
-          >
+          <Button type="submit">
             <span>{isPending ? "Изменение..." : "Изменить"}</span>
           </Button>
-          <DangerButton
-            type="button"
-            click={onClose}
-          >
+          <DangerButton type="button" click={onClose}>
             <span>Закрыть</span>
           </DangerButton>
         </div>
       </form>
     </div>,
-    document.body
+    document.body,
   );
 };
 

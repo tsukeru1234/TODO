@@ -20,11 +20,12 @@ def bulk_delete_tasks(ids, qs):
         .values_list("parent_id", flat=True)
         .distinct()
     )
+    ready_tasks_delete = filter_objects(obj=qs, id__in=ids, ready_status=True).count()
     delete_count, _ = filter_objects(obj=qs, id__in=ids).delete()
     filter_objects(obj=Folders.objects, id=parent_id).update(
         task_count=models.F("task_count") - delete_count,
     )
     for folder_id in folders:
-            if folder_id:
-                _update_folder_progress(folder_id)
-    return delete_count
+        if folder_id:
+            _update_folder_progress(folder_id)
+    return {"delete_count": delete_count, "ready_tasks_delete": ready_tasks_delete}

@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "./api";
 import { useNavigate } from "@tanstack/react-router";
-import type { folderData, foldersData } from "../@types/types_folders";
 import type { Tasks } from "../@types/types_tasks";
+import { updateFolderDetailCache, updateFoldersListCache } from "./util/cacheUpdate";
 
 interface data {
   [k: string]: FormDataEntryValue;
@@ -10,47 +10,17 @@ interface data {
 export const useCreateTasks = (id: string) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  return useMutation({
+  return useMutation<Tasks, Error, data>({
     mutationFn: async (taskData: data) => {
-      const { data } = await api.post<folderData>(
+      const { data } = await api.post<Tasks>(
         `api/folders/${id}/add_task/`,
         taskData,
       );
       return data;
     },
     onSuccess: (newTask) => {
-      queryClient.setQueryData(["folder_detail", id], (old: folderData) => {
-        if (!old) return undefined;
-        const newTaskCount = old.task_count + 1;
-        const newProgress: number =
-          newTaskCount > 0
-            ? Number(
-                ((old.ready_tasks / (old.task_count + 1)) * 100).toFixed(2),
-              )
-            : 0.0;
-        return {
-          ...old,
-          progress: newProgress,
-          task_count: newTaskCount,
-          tasks: old.tasks ? [...old.tasks, newTask] : [newTask],
-        };
-      });
-      queryClient.setQueryData(["folders"], (old: foldersData[]) => {
-        if (!old) return [];
-        return old.map((folder) => {
-          if (folder.id != id) return folder;
-          const newTaskCount = folder.task_count + 1;
-          const newProgress: number =
-            newTaskCount > 0
-              ? Number(((folder.ready_tasks / newTaskCount) * 100).toFixed(2))
-              : 0.0;
-          return {
-            ...folder,
-            task_count: newTaskCount,
-            progress: newProgress,
-          };
-        });
-      });
+      updateFolderDetailCache(queryClient, id, 1, 0, {type: 'add', payload: newTask})
+      updateFoldersListCache(queryClient, id, 1, 0);
       navigate({ from: "/", to: `/todo/${id}` });
     },
   });
@@ -60,67 +30,56 @@ export interface status {
   id: string;
   stat: boolean;
 }
+export interface responseStatus {
+  id: string;
+  ready_status: boolean;
+}
 
 export const useStatusTask = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (status: status) => {
-      const { data } = await api.patch<Tasks>(
+      const { data } = await api.patch<responseStatus>(
         `api/tasks/${status.id}/status/`,
         { ready_status: status.stat },
       );
       return data;
     },
     onSuccess: (updateTaskStatus) => {
-      queryClient.setQueryData<folderData>(["folder_detail", id], (old) => {
-        if (!old) return undefined;
-        const newReadyTasks = updateTaskStatus.ready_status
-          ? old.ready_tasks + 1
-          : old.ready_tasks - 1;
-        const newProgress =
-          old.task_count > 0
-            ? Number(((newReadyTasks / old.task_count) * 100).toFixed(2))
-            : 0;
-        return {
-          ...old,
-          ready_tasks: newReadyTasks,
-          progress: newProgress,
-          tasks:
-            old?.tasks.map((task) =>
-              task.id === updateTaskStatus.id ? { ...updateTaskStatus } : task,
-            ) ?? [],
-        };
-      });
-      queryClient.setQueryData(["folders"], (old: foldersData[]) => {
-        if (!old) return [];
-        return old.map((folder) => {
-          if (folder.id != id) return folder;
-          const newReadyTasks = updateTaskStatus.ready_status
-            ? folder.ready_tasks + 1
-            : folder.ready_tasks - 1;
-          const newProgress =
-            folder.task_count > 0
-              ? Number(((newReadyTasks / folder.task_count) * 100).toFixed(2))
-              : 0.0;
-          return {
-            ...folder,
-            ready_tasks: newReadyTasks,
-            progress: newProgress,
-          };
-        });
-      });
+      const updated_ready_tasks_count = updateTaskStatus.ready_status ? +1 : -1;
+      updateFolderDetailCache(queryClient, id, 0, updated_ready_tasks_count, {type: 'update_status', payload: updateTaskStatus})
+      updateFoldersListCache(queryClient, id, 0, updated_ready_tasks_count);
     },
   });
 };
 
-export const useBulkDeleteTasks = () => {
+export interface delTasksType {
+  ids: string;
+  deleteCount: number;
+  ready_tasks_delete: number;
+}
+
+interface idTasksVar {
+  ids: string[];
+}
+
+export const useBulkDeleteTasks = (id: string) => {
   const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: async (idTasks: string[]) => {
-      const response = await api.delete("api/tasks/bulk_delete/", {
-        data: { ids: idTasks },
+  return useMutation<delTasksType, Error, idTasksVar>({
+    mutationFn: async (idTasks: idTasksVar) => {
+      const { data } = await api.delete("api/tasks/bulk_delete/", {
+        data: { ...idTasks },
       });
-      return response
+      return data;
+    },
+    onSuccess: (delTasks) => {
+      updateFolderDetailCache(queryClient, id, -delTasks.deleteCount, -delTasks.ready_tasks_delete, {type: 'delete', payload: delTasks})
+      updateFoldersListCache(
+        queryClient,
+        id,
+        -delTasks.deleteCount,
+        -delTasks.ready_tasks_delete,
+      );
     },
   });
 };
