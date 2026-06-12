@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
-import DangerButton from "../../Buttons/DangerButton";
-import { useBulkDeleteTasks } from "../../../api/tasks";
-import { deleteStatus, idsDelList } from "./util/taskStore";
+import DangerButton from "../Buttons/DangerButton";
+import { useBulkDeleteTasks } from "../../api/tasks";
+import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
 
 const DeleteTasksButton = ({ id }: { id: string }) => {
   const [, setDelStat] = useAtom(deleteStatus);

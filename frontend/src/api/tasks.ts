@@ -26,7 +26,7 @@ export const useCreateTasks = (id: string) => {
   });
 };
 
-interface status {
+export interface status {
   id: string;
   stat: boolean;
 }

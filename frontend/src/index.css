@@ -20,6 +20,8 @@
   --color-my-violet-200: #9997c3;
   --color-my-violet-100: #8987ba;*/
 
+  --color-light-golder-50: #fff7dd;
+
   --color-priority-1: #ff8fa3;
   --color-priority-2: #ffccb3;
   --color-priority-3: #ffe58f;
@@ -152,6 +154,16 @@
   }
 
   --animate-folder-slide: folder-slide 0.45s ease-in;
+
+  @keyframes change-task-status-close {
+     from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  --animate-change-task-status-close: change-task-status-close 0.2s ease-in forwards;
 
   @keyframes open-creation-window {
      from {

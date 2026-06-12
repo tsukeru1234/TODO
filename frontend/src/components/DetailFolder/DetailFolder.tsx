@@ -6,6 +6,7 @@ import DetailFolderLoaderComponent from "../Loaders/DetailFolderLoaderComponent"
 import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
+import DeleteTasks from "./DeleteTasks";
 
 export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   const { data, isPending } = useFolderDetail(id);
@@ -20,7 +21,7 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   if (isPending) return <DetailFolderLoaderComponent />;
   if (!data)
     return (
-      <div className="grid h-full place-content-center gap-6 text-my-dub-200 font-bold text-9xl">
+      <div className="grid h-full place-content-center gap-6 text-my-dub-200 font-bold text-9xl ">
         <span className="text-center">404</span>
         <span className="text-3xl">Element not found</span>
       </div>
@@ -40,20 +41,27 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
         {path.includes("create-task") ? (
           <div className="col-span-5 min-h-0 ">{children}</div>
         ) : (
-          <div className="col-span-5 relative min-h-0">
+          <div className="col-span-5 min-h-0 relative">
             <ul className="text-2xl">
               <li>Кол-во задач:{data.task_count}</li>
               <li>Процент выполненных:{data.progress}</li>
             </ul>
-            <div className="absolute bottom-0 right-0 rounded-2xl py-3 px-4 3xl:py-9 3xl:px-12">
-              <DeleteRename id={data.id} title={data.title} />
+            <div className="flex gap-5 flex-col h-full justify-end ">
+              <div className="absolute top-2 left-0">
+                <DeleteTasks />
+              </div>
             </div>
           </div>
         )}
-        <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full text-2xl min-h-0 3xl:text-6xl">
+        <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full text-2xl min-h-0 relative">
           <hr className="border-dashed border-2 border-my-dub-500 3xl:border-4" />
           <span>Описание:</span>
-          <span className="overflow-auto h-full">{data.description}</span>
+          <span className="overflow-auto h-full pr-38 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {data.description}
+          </span>
+          <div className="absolute right-0 bottom-0 -translate-y-1/13 rounded-2xl py-3 px-4 mr-1.5 bg-light-golder-50 border-2 border-my-dub-100">
+            <DeleteRename id={data.id} title={data.title} />
+          </div>
         </div>
       </div>
     </>

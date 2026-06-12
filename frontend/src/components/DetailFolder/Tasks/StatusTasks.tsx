@@ -19,10 +19,10 @@ const StatusTasks = ({
   };
   return (
     <button
-      className="w-10 text-2xl text-center"
+      className={`w-20 transition-all duration-250 flex justify-end ${stats ? "" : "bg-my-green-600/10"}  rounded-xl z-0`}
       onClick={() => status(id, stats)}
     >
-      {children}
+      <div className={`w-10 text-2xl text-center transition-all duration-200 ${stats ? "mr-0" : "mr-10"} z-10`}>{children}</div>
     </button>
   );
 };

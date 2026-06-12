@@ -3,7 +3,6 @@ import { deleteStatus, filterStatus, filterTasksData } from "./util/taskStore";
 import type { Filter } from "./util/taskStore";
 import type { folderData } from "../../../@types/types_folders";
 import TaskList from "./TaskList";
-import DeleteTasks from "../DeleteTasks";
 import DeleteTaskList from "./DeleteTaskList";
 
 const FilteredReadyStatus = ({ data }: { data: folderData }) => {
@@ -17,7 +16,6 @@ const FilteredReadyStatus = ({ data }: { data: folderData }) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex px-3 justify-between relative animate-filter-com">
-        <DeleteTasks />
         <button
           className={
             status == "ALL"

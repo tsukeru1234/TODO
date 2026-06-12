@@ -4,7 +4,7 @@ import FilteredReadyStatus from "./FilteredReadyStatus";
 import type { folderData } from "../../../@types/types_folders";
 import { useAtom } from "jotai";
 import { deleteStatus } from "./util/taskStore";
-import DeleteTasksButton from "./DeleteTasksButton";
+import DeleteTasksButton from "../DeleteTasksButton";
 
 interface DetailFolderTypes {
   detailData: folderData;
