@@ -1,0 +1,73 @@
+.button {
+  width: 100%;
+  padding: clamp(2px, 1vw, 80px) clamp(4px, 2vw, 160px);
+  border-radius: clamp(10px, 2vw, 100px);
+  background-color: var(--accent-light);
+  color: var(--accent-dark);
+  text-shadow: 0 clamp(2px, 1vw, 4px) clamp(2px, 2vw, 8px) var(--accent-dark);
+  text-align: center;
+  transition: all;
+  transition-duration: 250ms;
+}
+
+.button:hover {
+  scale: 102% 102%;
+  box-shadow: clamp(2px, 1vw, 6px) clamp(3px, 1vw, 8px) clamp(4px, 2vw, 10px)
+    var(--shadow);
+}
+
+.button:active {
+  scale: 95% 95%;
+  background-color: var(--accent-dark);
+  color: var(--accent-light);
+}
+
+.sematic-good-button {
+  height: fit-content;
+  padding: clamp(1px, 1vh, 5px) clamp(5px, 5vw, 25px);
+  border-radius: clamp(10px, 2vw, 60px);
+  background-color: var(--sematic-good-light);
+  color: var(--sematic-good-dark);
+  text-shadow: 0 clamp(2px, 1vw, 4px) clamp(2px, 2vw, 8px)
+    var(--sematic-good-dark);
+  text-align: center;
+  transition: all;
+  transition-duration: 250ms;
+}
+
+.sematic-good-button:hover {
+  scale: 102% 102%;
+  box-shadow: clamp(1px, 1vw, 2px) clamp(2px, 1vw, 4px) clamp(2px, 2vw, 8px)
+    var(--shadow);
+}
+
+.sematic-good-button:active {
+  scale: 95% 95%;
+  background-color: var(--sematic-good-dark);
+  color: var(--sematic-good-light);
+}
+
+.sematic-bad-button {
+  height: fit-content;
+  padding: clamp(1px, 1vh, 5px) clamp(5px, 5vw, 25px);
+  border-radius: clamp(10px, 2vw, 60px);
+  background-color: var(--sematic-bad-light);
+  color: var(--sematic-bad-dark);
+  text-shadow: 0 clamp(2px, 1vw, 4px) clamp(2px, 2vw, 8px)
+    var(--sematic-bad-dark);
+  text-align: center;
+  transition: all;
+  transition-duration: 250ms;
+}
+
+.sematic-bad-button:hover {
+  scale: 102% 102%;
+  box-shadow: clamp(1px, 1vw, 2px) clamp(2px, 1vw, 4px) clamp(2px, 2vw, 8px)
+    var(--shadow);
+}
+
+.sematic-bad-button:active {
+  scale: 95% 95%;
+  background-color: var(--sematic-bad-dark);
+  color: var(--sematic-bad-light);
+}

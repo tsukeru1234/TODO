@@ -15,35 +15,35 @@ const SingIn = () => {
   return (
     <>
       <form
-        className="min-h-120 min-w-120 rounded-4xl dark-glass flex flex-col justify-around items-center font-bold pb-6 3xl:min-h-360 3xl:min-w-360"
+        className="min-h-120 min-w-120 rounded-4xl dark-hard-glass flex flex-col justify-around items-center font-bold pb-6"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="flex flex-col gap-3 text-2xl items-center justify-end h-full w-full 3xl:text-8xl 3xl:gap-6">
-          <div className="flex text-my-dub-500 text-shadow-my-dub-400 text-shadow-lg text-[55px] pb-4 pt-6 3xl:text-[160px]">
+        <div className="flex flex-col gap-3 text-2xl items-center justify-end h-full w-full">
+          <div className="flex text-accent text-shadow-accent-shadow text-shadow-lg text-[55px] pb-4 pt-6">
             To-do
           </div>
-          <div className="flex flex-col gap-2 3xl:w-full text-my-green-600 3xl:gap-12">
-            <div className="flex flex-col 3xl:m-auto 3xl:gap-6">
-              <span className="ml-1 mb-1 text-xl 3xl:text-7xl 3xl:ml-3 3xl:mb-3">
+          <div className="flex flex-col gap-2 3xl:w-full text-sematic-good 3xl:gap-12">
+            <div className="flex flex-col text-neutral">
+              <span className="ml-1 mb-1 text-xl">
                 Login:
               </span>
               <input
                 name="login"
-                className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
+                className="border-3 border-sematic-good-border transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:scale-102 focus:shadow-2xl focus:shadow-sematic-good focus:bg-sematic-good focus:outline-none rounded-xl p-1 max-w-100"
                 type="text"
                 placeholder="Логин"
                 required
               />
             </div>
-            <div className="flex flex-col 3xl:gap-6 3xl:m-auto">
+            <div className="flex flex-col text-neutral">
               <span className="ml-1 mb-1 text-xl 3xl:text-7xl 3xl:ml-3 3xl:mb-3">
                 Password:
               </span>
               <input
                 name="password"
-                className="border-3 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-dub-400 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
+                className="border-3 border-sematic-good-border transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:shadow-sematic-good focus:bg-sematic-good focus:scale-102 focus:outline-none rounded-xl p-1 max-w-100 3xl:border-6 3xl:rounded-4xl 3xl:p-3 3xl:max-w-250"
                 type="text"
                 placeholder="Пароль"
                 required
@@ -51,7 +51,7 @@ const SingIn = () => {
             </div>
           </div>
         </div>
-        <hr className="w-100 text-my-dub-500 border-dashed border-2 3xl:w-300 3xl:border-6" />
+        <hr className="w-100 text-secondary border-dashed border-2 3xl:w-300 3xl:border-6" />
         <div className="text-3xl flex flex-col gap-2">
           <Button type="submit">
             <span>{isPending ? "Вход..." : "Войти"}</span>

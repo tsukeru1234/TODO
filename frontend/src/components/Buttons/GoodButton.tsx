@@ -6,11 +6,11 @@ interface ButtonProps {
   type: "submit" | "reset" | "button";
 }
 
-const Button = ({ children, type, click }: ButtonProps) => {
+const GoodButton = ({ children, type, click }: ButtonProps) => {
   return (
     <button
       type={type}
-      className="button"
+      className="sematic-good-button"
       onClick={click}
     >
       {children}
@@ -18,4 +18,4 @@ const Button = ({ children, type, click }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default GoodButton;

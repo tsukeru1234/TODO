@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import DangerButton from "../Buttons/DangerButton";
+import DangerButton from "../Buttons/BadButton";
 import { useBulkDeleteTasks } from "../../api/tasks";
 import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
 

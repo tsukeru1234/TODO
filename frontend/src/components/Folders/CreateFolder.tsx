@@ -1,6 +1,6 @@
 import { useFoldersMutation } from "../../api/folders";
 import { Link } from "@tanstack/react-router";
-import DangerButton from "../Buttons/DangerButton";
+import DangerButton from "../Buttons/BadButton";
 import Button from "../Buttons/Button";
 
 const CreateFolder = () => {
@@ -14,19 +14,19 @@ const CreateFolder = () => {
   return (
     <>
       <form
-        className="text-3xl text-my-green-500 font-bold grid place-items-center h-full animate-open-creation-window"
+        className="text-3xl text-neutral font-bold grid place-items-center h-full animate-open-creation-window"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 text-sematic-good">
           <label className="flex flex-col gap-3">
             Title
             <input
               type="text"
               name="title"
               placeholder="Название папки"
-              className="pl-2 border-2 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-green-100 focus:outline-none rounded-xl p-1"
+              className="pl-2 border-2 border-sematic-good-border bg-my-dark-glass transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:shadow-sematic-good focus:bg-sematic-good/90 focus:scale-102 focus:shadow-2xl focus:outline-none rounded-xl p-1"
               required
             />
           </label>
@@ -36,7 +36,7 @@ const CreateFolder = () => {
               rows={4}
               name="description"
               placeholder="Опишите ваши планы(необязательно)"
-              className="pl-2 border-2 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-green-100 focus:outline-none rounded-xl p-1 w-140"
+              className="pl-2 border-2 border-sematic-good-border bg-my-dark-glass transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:shadow-sematic-good focus:bg-sematic-good/90 focus:scale-102 focus:shadow-2xl focus:outline-none rounded-xl p-1 w-140"
             />
           </label>
           <div className="flex justify-end gap-4">

@@ -1,16 +1,16 @@
 import type { JSX } from "react";
 
-interface ButtonProps {
+interface DangerButtonProps {
   click?: () => void;
   children: JSX.Element;
   type: "submit" | "reset" | "button";
 }
 
-const Button = ({ children, type, click }: ButtonProps) => {
+const BadButton = ({ children, type, click }: DangerButtonProps) => {
   return (
     <button
       type={type}
-      className="button"
+      className="sematic-bad-button"
       onClick={click}
     >
       {children}
@@ -18,4 +18,4 @@ const Button = ({ children, type, click }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default BadButton;

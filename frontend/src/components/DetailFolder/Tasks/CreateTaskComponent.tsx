@@ -1,6 +1,6 @@
 import { Link, useParams } from "@tanstack/react-router";
 import { useCreateTasks } from "../../../api/tasks";
-import DangerButton from "../../Buttons/DangerButton";
+import DangerButton from "../../Buttons/BadButton";
 import Button from "../../Buttons/Button";
 
 const CreateTaskComponent = () => {

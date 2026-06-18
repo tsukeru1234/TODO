@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import type { FolderModalProps } from "../../@types/types_components";
 import { useDeleteFolder } from "../../api/folders";
-import DangerButton from "../Buttons/DangerButton";
+import DangerButton from "../Buttons/BadButton";
 import Button from "../Buttons/Button";
 
 interface ConfirmDeleteFolder extends FolderModalProps {

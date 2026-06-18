@@ -1,7 +1,7 @@
 import type { FolderModalProps } from "../../@types/types_components";
 import { useFolderRedact } from "../../api/folders";
 import ReactDOM from "react-dom";
-import DangerButton from "../Buttons/DangerButton";
+import DangerButton from "../Buttons/BadButton";
 import Button from "../Buttons/Button";
 
 interface RenameModalProps extends FolderModalProps {

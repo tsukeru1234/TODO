@@ -6,7 +6,6 @@ import DetailFolderLoaderComponent from "../Loaders/DetailFolderLoaderComponent"
 import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
-import DeleteTasks from "./DeleteTasks";
 
 export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
   const { data, isPending } = useFolderDetail(id);
@@ -46,11 +45,6 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
               <li>Кол-во задач:{data.task_count}</li>
               <li>Процент выполненных:{data.progress}</li>
             </ul>
-            <div className="flex gap-5 flex-col h-full justify-end ">
-              <div className="absolute top-2 left-0">
-                <DeleteTasks />
-              </div>
-            </div>
           </div>
         )}
         <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full text-2xl min-h-0 relative">

@@ -1,6 +1,83 @@
 @import "tailwindcss";
+@import "./pages/styles/start_page.css";
+@import "./components/Buttons/styles/buttons.css";
+/* life-savers-regular - latin */
+/* life-savers-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Life Savers";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/public/fonts/life-savers-v23-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* life-savers-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Life Savers";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/src/public/fonts/life-savers-v23-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* life-savers-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Life Savers";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/src/public/fonts/life-savers-v23-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+  --primary: #382D2D;
+  --secondary: #87c76d;
+  --shadow: rgba(18, 17, 22, 0.4);
+  --accent-light: #a99fbd;
+  --accent-dark: #333546;
+  --neutral: #e8f4e0;
+
+  --sematic-good-light: #c9edba;
+  --sematic-good-dark: #5cad30;
+  --sematic-bad-light: #edc2ba;
+  --sematic-bad-dark: #ad4530;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Life Savers", serif;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary);
+}
+.screen {
+  width: 100vw;
+  height: 100vh;
+}
+
 @theme {
   --breakpoint-3xl: 2560px;
+
+  --color-primary: #132615;
+  --color-secondary: #661f48;
+  /* --color-accent: #d69392; */
+  --color-accent-shadow: #cc7070;
+
+  --color-sematic-good: #a7ccc9;
+  --color-sematic-bad: #dac1bf;
+
+  --color-sematic-good-text: #516f8c;
+  --color-sematic-bad-text: #a86d68;
+
+  --color-sematic-good-border: #6988a7;
+  --color-sematic-bad-border: #b28581;
+
+  /* !! */
 
   --color-my-green-100: #528e65;
   --color-my-green-200: #60a386;
@@ -16,29 +93,19 @@
   --color-my-dub-500: #ddc7aa;
   --color-my-dub-600: #e4d3bc;
 
-  /*  --color-my-violet-400: #605da2;
-  --color-my-violet-200: #9997c3;
-  --color-my-violet-100: #8987ba;*/
-
   --color-light-golder-50: #fff7dd;
 
-  --color-priority-1: #ff8fa3;
-  --color-priority-2: #ffccb3;
-  --color-priority-3: #ffe58f;
-  --color-priority-4: #a8e6a3;
-  --color-priority-5: #a9d6ff;
+  --color-priority-1: #f1e0e8;
+  --color-priority-2: #f3e2fa;
+  --color-priority-3: #dfedf3;
+  --color-priority-4: #bddacd;
+  --color-priority-5: #b2c9e3;
 
-  --color-txt-priority-1: #ee002b;
-  --color-txt-priority-2: #ff8244;
-  --color-txt-priority-3: #ddaa00;
-  --color-txt-priority-4: #3dbb33;
-  --color-txt-priority-5: #118eff;
-
-  --color-txt-shadow-priority-1: #aa001e;
-  --color-txt-shadow-priority-2: #dd4900;
-  --color-txt-shadow-priority-3: #aa8300;
-  --color-txt-shadow-priority-4: #2c8624;
-  --color-txt-shadow-priority-5: #0062bb;
+  --color-txt-priority-1: #9d121e;
+  --color-txt-priority-2: #7d1fa2;
+  --color-txt-priority-3: #090dc4;
+  --color-txt-priority-4: #0b695a;
+  --color-txt-priority-5: #30516f;
 
   --color-my-red-100: #e84a58;
   --color-my-violet-300: #9966cc;
@@ -51,10 +118,6 @@
     rgba(160, 160, 160, 0.2) 50%,
     rgba(96, 96, 96, 0.3) 100%
   );
-
-  --color-my-dark-glass: .dark-glass;
-  --color-my-dark-hard-glass: .dark-hard-glass;
-  --color-my-dark-gradient-hard-glass: .dark-gradient-hard-glass;
 
   @keyframes slide {
     from {
@@ -144,29 +207,28 @@
     from {
       opacity: 0;
       transform: translateX(3%);
-      display: box;
     }
     to {
       opacity: 1;
       transform: translateX(0);
-      display: none;
     }
   }
 
   --animate-folder-slide: folder-slide 0.45s ease-in;
 
   @keyframes change-task-status-close {
-     from {
+    from {
       opacity: 1;
     }
     to {
       opacity: 0;
     }
   }
-  --animate-change-task-status-close: change-task-status-close 0.2s ease-in forwards;
+  --animate-change-task-status-close: change-task-status-close 0.2s ease-in
+    forwards;
 
   @keyframes open-creation-window {
-     from {
+    from {
       opacity: 0;
     }
     to {
@@ -184,7 +246,7 @@
     }
   }
 
-  --animate-open-del-red-window: open-del-red-window 0.5 ease-in;
+  --animate-open-del-red-window: open-del-red-window 0.5s ease-in;
 }
 @layer utilities {
   .load-glass {
@@ -200,44 +262,27 @@
   }
 
   .dark-glass {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(19, 38, 21, 0.3);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      5px 5px 10px rgba(0, 0, 0, 0.5);
+      0 8px 32px rgba(19, 38, 21, 0.4),
+      5px 5px 10px rgba(19, 38, 21, 0.7);
     backdrop-filter: blur(3px);
   }
 
-  .dark-soft-glass {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.1),
-      5px 5px 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1px);
-  }
   .dark-hard-glass {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(19, 38, 21, 0.7);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.6),
-      5px 5px 10px rgba(0, 0, 0, 0.5);
+      0 8px 32px rgba(19, 38, 21, 0.5),
+      5px 5px 10px rgba(19, 38, 21, 0.3);
     backdrop-filter: blur(3px);
   }
   .dark-gradient-hard-glass {
     background: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0.2) 85%,
-      rgba(0, 0, 0, 0.05) 95%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
-
-  .folder {
-    background: linear-gradient(
-      to right,
-      rgba(96, 96, 96, 0.3) 0%,
-      rgba(160, 160, 160, 0.2) 50%,
-      rgba(96, 96, 96, 0.3) 100%
+      rgba(102, 31, 72, 0.2) 0%,
+      rgba(102, 31, 72, 0.1) 70%,
+      rgba(19, 38, 21, 0.05) 95%,
+      rgba(19, 38, 21, 0) 100%
     );
   }
 

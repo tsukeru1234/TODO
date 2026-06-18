@@ -1,0 +1,34 @@
+@keyframes open-start-page {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.open-start-page {
+  animation: open-start-page 1.3s ease-in-out;
+}
+
+@keyframes open-start-page-demonstrations {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.open-start-page-demonstrations {
+  animation: open-start-page-demonstrations 1.8s ease-out 300ms forwards;
+}

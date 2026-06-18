@@ -26,8 +26,8 @@ const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
             <span
               className={
                 item.ready_status
-                  ? `bg-my-green-600/3 ${txt} pl-3 pr-2 text-center rounded-l-xl`
-                  : `${bg} ${txt} pl-3 pr-2 text-center rounded-l-xl`
+                  ? `bg-my-green-600/3 ${txt} px-3 py-0.5 text-center rounded-l-xl`
+                  : `${bg} ${txt} px-3 py-0.5 text-center rounded-l-xl`
               }
             >
               {item.priority}
