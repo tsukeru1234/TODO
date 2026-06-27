@@ -12,6 +12,7 @@
 .title-starting-page-2 {
   position: relative;
   font-weight: 800;
-  padding: 0 clamp(8px, 2vw, 25px);
+  padding: clamp(2px, 1vh, 15px) clamp(8px, 2vw, 25px) 0 clamp(8px, 2vw, 25px);
+  line-height: 100%;
   background-color: color-mix(in srgb, var(--accent-light) 15%, transparent);
 }

@@ -10,7 +10,6 @@ class MyUsersManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 class Users(AbstractBaseUser): # ? Модель юзера
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     login = models.CharField(unique=True, max_length=50)

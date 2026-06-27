@@ -9,7 +9,7 @@ const Registration = () => {
   return (
     <>
       <form
-        className="min-h-150 min-w-120 rounded-4xl dark-hard-glass flex flex-col justify-around items-center font-bold pb-6"
+        className="min-h-150 min-w-120 rounded-4xl dark-hard-glass flex flex-col justify-around items-center font-bold pb-6a"
         onSubmit={(e) => {
           handleSubmit(e);
         }}

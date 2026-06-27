@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@import "./pages/styles/start_page.css";
+@import "./pages/styles/start/start_page.css";
 @import "./components/Buttons/styles/buttons.css";
+@import "./pages/styles/auth/acc.css";
 /* life-savers-regular - latin */
 /* life-savers-regular - latin */
 @font-face {
@@ -31,8 +32,8 @@
 }
 
 :root {
-  --primary: #382D2D;
-  --secondary: #87c76d;
+  --primary: #302929;
+  --secondary: #7fae6b;
   --shadow: rgba(18, 17, 22, 0.4);
   --accent-light: #a99fbd;
   --accent-dark: #333546;

@@ -14,8 +14,6 @@ import { Route as AccRouteImport } from './routes/acc'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TodoCreateFolderRouteImport } from './routes/todo.create-folder'
 import { Route as TodoIdRouteImport } from './routes/todo.$id'
-import { Route as AccSing_inRouteImport } from './routes/acc.sing_in'
-import { Route as AccRegistrationRouteImport } from './routes/acc.registration'
 import { Route as TodoIdCreateTaskRouteImport } from './routes/todo.$id.create-task'
 
 const TodoRoute = TodoRouteImport.update({
@@ -43,16 +41,6 @@ const TodoIdRoute = TodoIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => TodoRoute,
 } as any)
-const AccSing_inRoute = AccSing_inRouteImport.update({
-  id: '/sing_in',
-  path: '/sing_in',
-  getParentRoute: () => AccRoute,
-} as any)
-const AccRegistrationRoute = AccRegistrationRouteImport.update({
-  id: '/registration',
-  path: '/registration',
-  getParentRoute: () => AccRoute,
-} as any)
 const TodoIdCreateTaskRoute = TodoIdCreateTaskRouteImport.update({
   id: '/create-task',
   path: '/create-task',
@@ -61,20 +49,16 @@ const TodoIdCreateTaskRoute = TodoIdCreateTaskRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/acc': typeof AccRouteWithChildren
+  '/acc': typeof AccRoute
   '/todo': typeof TodoRouteWithChildren
-  '/acc/registration': typeof AccRegistrationRoute
-  '/acc/sing_in': typeof AccSing_inRoute
   '/todo/$id': typeof TodoIdRouteWithChildren
   '/todo/create-folder': typeof TodoCreateFolderRoute
   '/todo/$id/create-task': typeof TodoIdCreateTaskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/acc': typeof AccRouteWithChildren
+  '/acc': typeof AccRoute
   '/todo': typeof TodoRouteWithChildren
-  '/acc/registration': typeof AccRegistrationRoute
-  '/acc/sing_in': typeof AccSing_inRoute
   '/todo/$id': typeof TodoIdRouteWithChildren
   '/todo/create-folder': typeof TodoCreateFolderRoute
   '/todo/$id/create-task': typeof TodoIdCreateTaskRoute
@@ -82,10 +66,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/acc': typeof AccRouteWithChildren
+  '/acc': typeof AccRoute
   '/todo': typeof TodoRouteWithChildren
-  '/acc/registration': typeof AccRegistrationRoute
-  '/acc/sing_in': typeof AccSing_inRoute
   '/todo/$id': typeof TodoIdRouteWithChildren
   '/todo/create-folder': typeof TodoCreateFolderRoute
   '/todo/$id/create-task': typeof TodoIdCreateTaskRoute
@@ -96,8 +78,6 @@ export interface FileRouteTypes {
     | '/'
     | '/acc'
     | '/todo'
-    | '/acc/registration'
-    | '/acc/sing_in'
     | '/todo/$id'
     | '/todo/create-folder'
     | '/todo/$id/create-task'
@@ -106,8 +86,6 @@ export interface FileRouteTypes {
     | '/'
     | '/acc'
     | '/todo'
-    | '/acc/registration'
-    | '/acc/sing_in'
     | '/todo/$id'
     | '/todo/create-folder'
     | '/todo/$id/create-task'
@@ -116,8 +94,6 @@ export interface FileRouteTypes {
     | '/'
     | '/acc'
     | '/todo'
-    | '/acc/registration'
-    | '/acc/sing_in'
     | '/todo/$id'
     | '/todo/create-folder'
     | '/todo/$id/create-task'
@@ -125,7 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AccRoute: typeof AccRouteWithChildren
+  AccRoute: typeof AccRoute
   TodoRoute: typeof TodoRouteWithChildren
 }
 
@@ -166,20 +142,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TodoIdRouteImport
       parentRoute: typeof TodoRoute
     }
-    '/acc/sing_in': {
-      id: '/acc/sing_in'
-      path: '/sing_in'
-      fullPath: '/acc/sing_in'
-      preLoaderRoute: typeof AccSing_inRouteImport
-      parentRoute: typeof AccRoute
-    }
-    '/acc/registration': {
-      id: '/acc/registration'
-      path: '/registration'
-      fullPath: '/acc/registration'
-      preLoaderRoute: typeof AccRegistrationRouteImport
-      parentRoute: typeof AccRoute
-    }
     '/todo/$id/create-task': {
       id: '/todo/$id/create-task'
       path: '/create-task'
@@ -189,18 +151,6 @@ declare module '@tanstack/react-router' {
     }
   }
 }
-
-interface AccRouteChildren {
-  AccRegistrationRoute: typeof AccRegistrationRoute
-  AccSing_inRoute: typeof AccSing_inRoute
-}
-
-const AccRouteChildren: AccRouteChildren = {
-  AccRegistrationRoute: AccRegistrationRoute,
-  AccSing_inRoute: AccSing_inRoute,
-}
-
-const AccRouteWithChildren = AccRoute._addFileChildren(AccRouteChildren)
 
 interface TodoIdRouteChildren {
   TodoIdCreateTaskRoute: typeof TodoIdCreateTaskRoute
@@ -227,7 +177,7 @@ const TodoRouteWithChildren = TodoRoute._addFileChildren(TodoRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AccRoute: AccRouteWithChildren,
+  AccRoute: AccRoute,
   TodoRoute: TodoRouteWithChildren,
 }
 export const routeTree = rootRouteImport

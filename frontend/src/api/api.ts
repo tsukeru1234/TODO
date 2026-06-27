@@ -54,7 +54,7 @@ api.interceptors.response.use(
       } catch (refreshError) {
         store.set(accessToken, null);
         if (window.location.pathname !== "/") {
-          window.location.href = "/acc/sing_in/";
+          window.location.href = "/acc/";
         }
         return Promise.reject(refreshError);
       }
