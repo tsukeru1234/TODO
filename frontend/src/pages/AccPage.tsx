@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Button from "../components/Buttons/Button";
+import { useSignInAccPage, useSignUpAccPage } from "../hooks/useAccPage";
 
 const AccPage = () => {
   const [sing, setSing] = useState<boolean>(true);
+  const signIn = useSignInAccPage();
+  const signUp = useSignUpAccPage();
   return (
     <div className="center">
       <div className="auth-main-block">
@@ -25,14 +28,23 @@ const AccPage = () => {
             className={`active-bg ${sing ? "sing-in-active" : "sing-up-active"}`}
           ></div>
         </nav>
-        <div className={`sing-box ${sing ? "sing-in-box" : "sing-up-box"}`}>
+        <form
+          className={`sing-box ${sing ? "sing-in-box" : "sing-up-box"}`}
+          onSubmit={(e) => {
+            if (sing) {
+              signIn.handleSubmitSignIn(e);
+            } else {
+              signUp.handleSubmitSignUp(e);
+            }
+          }}
+        >
           <label>
             Enter acc login:
-            <input type="text" placeholder="LOGIN" />
+            <input type="text" placeholder="LOGIN" name="login" required/>
           </label>
           <label>
             Enter acc password:
-            <input type="text" placeholder="PASSWORD" />
+            <input type="password" placeholder="PASSWORD" name="password" required/>
           </label>
           {!sing && (
             <label className="auth-mode-toggle">
@@ -40,8 +52,11 @@ const AccPage = () => {
               <input type="text" placeholder="PASSWORD" />
             </label>
           )}
-          <div className="sing-buttons auth-mode-toggle" key={sing ? "signin" : "signup"}>
-            <Button type="button">
+          <div
+            className="sing-buttons auth-mode-toggle"
+            key={sing ? "signin" : "signup"}
+          >
+            <Button type="submit">
               <span>{sing ? "SIGN IN" : "SIGN UP"}</span>
             </Button>
             <div className="back-button">
@@ -50,7 +65,7 @@ const AccPage = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
