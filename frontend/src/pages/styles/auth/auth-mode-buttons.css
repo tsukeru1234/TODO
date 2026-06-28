@@ -1,0 +1,64 @@
+.auth-buttons-bg {
+    position: relative;
+    display: inline-flex;
+    gap: 130px;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: var(--accent-light);
+    font-size: var(--font-medium);
+    font-weight: bold;
+    z-index: 0;
+}
+
+.auth-buttons {
+    display: inline-flex;
+    gap: 130px;
+    padding: 15px 20px 10px 20px;
+}
+
+.sings-button {
+    display: inline-flex;
+    align-items: center;
+    color: transparent;
+    text-shadow: 0 0 3px transparent;
+    word-spacing: 0.2em;
+    transition: all 500ms ease-in-out 150ms;
+    z-index: 3;
+}
+
+.active-txt {
+    color: var(--neutral);
+    text-shadow: 0 0 3px var(--neutral);
+}
+
+.inactive-txt {
+    color: var(--accent-dark);
+    text-shadow: 0 0 3px var(--accent-dark);
+}
+
+.sings-button span {
+    line-height: 100%;
+}
+
+.active-bg {
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    width: 5.18em;
+    padding: 30px;
+    border-radius: 40px;
+    background-color: var(--accent-dark);
+    z-index: 1;
+    transition: all 600ms ease-in-out;
+}
+
+.sing-in-active {
+    margin: 0 0 0 0;
+}
+
+.sing-up-active {
+    margin: 0 0 0 56.53%;
+    width: 5.2em;
+}

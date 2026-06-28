@@ -1,0 +1,73 @@
+.sing-box {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 480px;
+    height: 0;
+    padding: 25px 30px 30px 30px;
+    border-radius: 25px;
+    border: solid 8px var(--secondary);
+    transition: all 800ms ease-in-out 250ms;
+}
+
+.sing-box label {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 12px;
+    line-height: 100%;
+    font-size: var(--font-medium);
+    color: var(--neutral);
+    font-weight: 800;
+}
+
+.sing-box input {
+    padding: 6px 0 2px 10px;
+    border-radius: 15px;
+    border: solid 3px var(--secondary);
+    font-size: var(--font-small);
+    color: var(--accent-light);
+    transition: all 300ms ease-in-out;
+}
+
+.sing-box input:focus{
+    scale: 102% 102%;
+    border: solid 3px var(--accent-dark);
+    background-color: var(--accent-dark);
+    color: var(--secondary);
+    outline: none;
+}
+
+.sing-in-box {
+    height: 480px;
+}
+
+.sing-up-box {
+    height: 620px;
+}
+
+@keyframes sing-up-mode-toggle {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.auth-mode-toggle {
+    opacity: 0;
+    animation: sing-up-mode-toggle 600ms ease-in-out 600ms forwards;
+}
+
+.sing-buttons{
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sing-buttons span {
+    font-size: var(--font-medium);
+    font-weight: bold;
+}
+
+.back-button {
+    padding: 0 30px;
+}
