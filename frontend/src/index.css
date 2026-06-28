@@ -30,7 +30,7 @@
   font-weight: 800;
   src: url("/src/public/fonts/life-savers-v23-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
+/* test */
 :root {
   --primary: #362929;
   --secondary: #7fae6b;
