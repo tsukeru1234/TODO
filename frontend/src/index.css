@@ -2,6 +2,7 @@
 @import "./pages/styles/start/start_page.css";
 @import "./components/Buttons/styles/buttons.css";
 @import "./pages/styles/auth/acc.css";
+@import "./pages/styles/todo/todo.css";
 /* life-savers-regular - latin */
 /* life-savers-regular - latin */
 @font-face {
@@ -44,7 +45,7 @@
   --sematic-bad-light: #edc2ba;
   --sematic-bad-dark: #ad4530;
 
-  --font-small: 24px;
+  --font-small: 30px;
   --font-medium: 38px;
   --font-big: 60px;
 }

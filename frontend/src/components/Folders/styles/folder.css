@@ -1,0 +1,42 @@
+.folder {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    line-height: 100%;
+    padding: 7px 15px 3px 15px;
+    border-radius: 10px;
+    background-color: color-mix(in srgb, var(--secondary) 8%, transparent);
+    font-size: var(--font-medium);
+    color: var(--neutral);
+    font-size: var(--font-small)
+}
+
+.folder-progress-percent {
+    font-size: var(--font-small);
+    flex-shrink: 0;
+}
+
+.folder-title {
+    min-width: 0; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1; 
+    padding-right: 2px;
+    font-weight: bold;
+}
+
+
+.folder-progress-bar {
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: color-mix(in srgb, var(--neutral) 10%, transparent);;
+    transition: all 600ms ease-in-out;
+    pointer-events: none; 
+    z-index: 0;
+}

@@ -1,7 +1,7 @@
 import { useFoldersMutation } from "../../api/folders";
 import { Link } from "@tanstack/react-router";
-import DangerButton from "../Buttons/BadButton";
-import Button from "../Buttons/Button";
+import BadButton from "../Buttons/BadButton";
+import GoodButton from "../Buttons/GoodButton";
 
 const CreateFolder = () => {
   const { mutate, isPending } = useFoldersMutation();
@@ -14,39 +14,39 @@ const CreateFolder = () => {
   return (
     <>
       <form
-        className="text-3xl text-neutral font-bold grid place-items-center h-full animate-open-creation-window"
+        className="create-folder-form"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="flex flex-col gap-5 text-sematic-good">
-          <label className="flex flex-col gap-3">
+        <div className="create-folder-input-box">
+          <label className="">
             Title
             <input
               type="text"
               name="title"
-              placeholder="Название папки"
-              className="pl-2 border-2 border-sematic-good-border bg-my-dark-glass transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:shadow-sematic-good focus:bg-sematic-good/90 focus:scale-102 focus:shadow-2xl focus:outline-none rounded-xl p-1"
+              placeholder="Folder name"
+              className="create-folder-input"
               required
             />
           </label>
-          <label className="flex flex-col gap-3">
+          <label className="">
             Description
             <textarea
               rows={4}
               name="description"
-              placeholder="Опишите ваши планы(необязательно)"
-              className="pl-2 border-2 border-sematic-good-border bg-my-dark-glass transition-all duration-250 focus:text-sematic-good-text focus:border-sematic-good focus:shadow-sematic-good focus:bg-sematic-good/90 focus:scale-102 focus:shadow-2xl focus:outline-none rounded-xl p-1 w-140"
+              placeholder="Describe your plans (optional)"
+              className="create-folder-input"
             />
           </label>
-          <div className="flex justify-end gap-4">
-            <Button type="submit">
-              <span>{isPending ? "В процессе..." : "Создать"}</span>
-            </Button>
+          <div className="create-folder-button-box">
+            <GoodButton type="submit">
+              <span>{isPending ? "Creating..." : "Create"}</span>
+            </GoodButton>
             <Link from="/" to="/todo">
-              <DangerButton type="button">
-                <span>Назад</span>
-              </DangerButton>
+              <BadButton type="button">
+                <span>Back</span>
+              </BadButton>
             </Link>
           </div>
         </div>

@@ -1,0 +1,42 @@
+.create-folder-form {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  font-size: var(--font-medium);
+  color: var(--neutral);
+  font-weight: bold;
+}
+
+.create-folder-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.create-folder-input-box label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.create-folder-input {
+  line-height: 100%;
+  padding: 7px 5px 3px 5px;
+  border-radius: 10px;
+  border: solid 2px var(--secondary);
+  transition: all 400ms ease-in-out;
+}
+
+.create-folder-input:focus {
+  scale: 102% 102%;
+  border: solid 3px var(--accent-dark);
+  background-color: var(--accent-dark);
+  color: var(--secondary);
+  outline: none;
+}
+
+.create-folder-button-box {
+  display: flex;
+  gap: 25px;
+  justify-content: end;
+}
