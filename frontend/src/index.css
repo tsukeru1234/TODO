@@ -3,38 +3,19 @@
 @import "./components/Buttons/styles/buttons.css";
 @import "./pages/styles/auth/acc.css";
 @import "./pages/styles/todo/todo.css";
-/* life-savers-regular - latin */
-/* life-savers-regular - latin */
+/* comic-relief-regular - cyrillic_latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Life Savers";
+  font-family: 'Comic Relief';
   font-style: normal;
   font-weight: 400;
-  src: url("/src/public/fonts/life-savers-v23-latin-regular.woff2")
-    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('./public/fonts/comic-relief-v2-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* life-savers-700 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Life Savers";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/src/public/fonts/life-savers-v23-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-/* life-savers-800 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "Life Savers";
-  font-style: normal;
-  font-weight: 800;
-  src: url("/src/public/fonts/life-savers-v23-latin-800.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
 /* test */
 :root {
   --primary: #362929;
-  --secondary: #7fae6b;
+  --secondary: #7aab65;
   --shadow: rgba(18, 17, 22, 0.4);
   --accent-light: #a99fbd;
   --accent-dark: #333546;
@@ -45,9 +26,10 @@
   --sematic-bad-light: #edc2ba;
   --sematic-bad-dark: #ad4530;
 
-  --font-small: 30px;
-  --font-medium: 38px;
-  --font-big: 60px;
+  --font-extra-small: 22px;
+  --font-small: 28px;
+  --font-medium: 36px;
+  --font-big: 58px;
 }
 
 .center {
@@ -60,7 +42,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-family: "Life Savers", serif;
+  font-family: 'Comic Relief', serif;
 }
 
 .background {
@@ -73,233 +55,3 @@ body {
   height: 100vh;
 }
 
-@theme {
-  --breakpoint-3xl: 2560px;
-
-  --color-primary: #132615;
-  --color-secondary: #661f48;
-  /* --color-accent: #d69392; */
-  --color-accent-shadow: #cc7070;
-
-  --color-sematic-good: #a7ccc9;
-  --color-sematic-bad: #dac1bf;
-
-  --color-sematic-good-text: #516f8c;
-  --color-sematic-bad-text: #a86d68;
-
-  --color-sematic-good-border: #6988a7;
-  --color-sematic-bad-border: #b28581;
-
-  /* !! */
-
-  --color-my-green-100: #528e65;
-  --color-my-green-200: #60a386;
-  --color-my-green-300: #70ad98;
-  --color-my-green-400: #84b8aa;
-  --color-my-green-500: #97c3bb;
-  --color-my-green-600: #a7ccc9;
-
-  --color-my-dub-100: #c09761;
-  --color-my-dub-200: #c7a373;
-  --color-my-dub-300: #cfaf85;
-  --color-my-dub-400: #d6bb98;
-  --color-my-dub-500: #ddc7aa;
-  --color-my-dub-600: #e4d3bc;
-
-  --color-light-golder-50: #fff7dd;
-
-  --color-priority-1: #f1e0e8;
-  --color-priority-2: #f3e2fa;
-  --color-priority-3: #dfedf3;
-  --color-priority-4: #bddacd;
-  --color-priority-5: #b2c9e3;
-
-  --color-txt-priority-1: #9d121e;
-  --color-txt-priority-2: #7d1fa2;
-  --color-txt-priority-3: #090dc4;
-  --color-txt-priority-4: #0b695a;
-  --color-txt-priority-5: #30516f;
-
-  --color-my-red-100: #e84a58;
-  --color-my-violet-300: #9966cc;
-  --color-my-blue-100: #6a5acd;
-  --color-my-green-700: #8ccb5e;
-
-  --color-my-folder: linear-gradient(
-    to right,
-    rgba(96, 96, 96, 0.3) 0%,
-    rgba(160, 160, 160, 0.2) 50%,
-    rgba(96, 96, 96, 0.3) 100%
-  );
-
-  @keyframes slide {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  --animate-slide: slide 0.4s ease-out;
-
-  @keyframes scroll-txt {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  --animate-scroll-txt: scroll-txt 4s linear infinite;
-
-  @keyframes load-move {
-    0% {
-      background-position: 200% 0%;
-    }
-    100% {
-      background-position: -200% 0%;
-    }
-  }
-
-  @keyframes open-filter {
-    from {
-      background: rgba(167, 204, 201, 0.05);
-    }
-    to {
-      background: rgba(167, 204, 201, 0.25);
-    }
-  }
-
-  --animate-open-filter: open-filter 0.4s ease-in;
-
-  @keyframes close-filter {
-    from {
-      background: rgba(167, 204, 201, 0.25);
-    }
-    to {
-      background: rgba(167, 204, 201, 0.05);
-    }
-  }
-
-  --animate-close-filter: close-filter 0.45s ease-in;
-
-  @keyframes task-slide {
-    from {
-      opacity: 0;
-      transform: translateX(10%);
-      display: box;
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-      display: none;
-    }
-  }
-
-  --animate-task-slide: task-slide 0.4s ease-in;
-
-  @keyframes filter-com {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  --animate-filter-com: filter-com 1s ease-in;
-
-  @keyframes folder-slide {
-    from {
-      opacity: 0;
-      transform: translateX(3%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  --animate-folder-slide: folder-slide 0.45s ease-in;
-
-  @keyframes change-task-status-close {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  --animate-change-task-status-close: change-task-status-close 0.2s ease-in
-    forwards;
-
-  @keyframes open-creation-window {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  --animate-open-creation-window: open-creation-window 0.4s ease-in forwards;
-
-  @keyframes open-del-red-window {
-    from {
-      transform: scale(0.5);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-
-  --animate-open-del-red-window: open-del-red-window 0.5s ease-in;
-}
-@layer utilities {
-  .load-glass {
-    background: linear-gradient(
-      to right,
-      rgba(60, 60, 60, 0.3) 0%,
-      rgba(130, 130, 130, 0.2) 50%,
-      rgba(60, 60, 60, 0.3) 100%
-    );
-    background-size: 200% 100%;
-    animation: load-move 4s linear infinite;
-    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5));
-  }
-
-  .dark-glass {
-    background: rgba(19, 38, 21, 0.3);
-    box-shadow:
-      0 8px 32px rgba(19, 38, 21, 0.4),
-      5px 5px 10px rgba(19, 38, 21, 0.7);
-    backdrop-filter: blur(3px);
-  }
-
-  .dark-hard-glass {
-    background: rgba(19, 38, 21, 0.7);
-    box-shadow:
-      0 8px 32px rgba(19, 38, 21, 0.5),
-      5px 5px 10px rgba(19, 38, 21, 0.3);
-    backdrop-filter: blur(3px);
-  }
-  .dark-gradient-hard-glass {
-    background: linear-gradient(
-      to right,
-      rgba(102, 31, 72, 0.2) 0%,
-      rgba(102, 31, 72, 0.1) 70%,
-      rgba(19, 38, 21, 0.05) 95%,
-      rgba(19, 38, 21, 0) 100%
-    );
-  }
-
-  .custom-scroll {
-    scrollbar-width: none;
-  }
-}

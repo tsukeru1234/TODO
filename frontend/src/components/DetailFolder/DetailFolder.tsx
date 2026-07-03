@@ -27,36 +27,26 @@ export const DetailFolder = ({ id, children, path }: DetailFolderTypes) => {
     );
   return (
     <>
-      <div
-        key={data.id}
-        className="text-my-dub-400 p-4 grid grid-cols-6 grid-rows-[minmax(0,1fr)_minmax(0,15fr)_minmax(0,4fr)] h-full font-bold gap-2 animate-folder-slide"
-      >
-        <span className="col-span-6 wrap-anywhere text-3xl text-center h-full 3xl:text-8xl">
-          {data.title}/{data.task_count}
-        </span>
+      <div key={data.id} className="detail-folder-main-box">
+        <div className="detail-folder-title-box">
+          <span>{data.title}</span>
+        </div>
+        <div className="detail-folder-tasks-box"><DetailTasksComponent detailData={data} /></div>
+        <div className="detail-folder-graph-box">{path.includes("create-task") ? (<>{children}</>) : (<div></div>)}</div>
+        <div className="detail-folder-description-box">
+          <span>Description:</span>
+          <span className="detail-folder-description-text">
+            {data.description}
+          </span>
+        </div>
+        {/*
         <div className="w-full max-h-full flex flex-col gap-3 justify-between text-xl text-my-dub-300 pt-2 min-h-0">
           <DetailTasksComponent detailData={data} />
         </div>
-        {path.includes("create-task") ? (
-          <div className="col-span-5 min-h-0 ">{children}</div>
-        ) : (
-          <div className="col-span-5 min-h-0 relative">
-            <ul className="text-2xl">
-              <li>Кол-во задач:{data.task_count}</li>
-              <li>Процент выполненных:{data.progress}</li>
-            </ul>
-          </div>
-        )}
-        <div className="col-span-6 wrap-anywhere flex flex-col gap-2 max-h-full text-2xl min-h-0 relative">
-          <hr className="border-dashed border-2 border-my-dub-500 3xl:border-4" />
-          <span>Описание:</span>
-          <span className="overflow-auto h-full pr-38 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {data.description}
-          </span>
           <div className="absolute right-0 bottom-0 -translate-y-1/13 rounded-2xl py-3 px-4 mr-1.5 bg-light-golder-50 border-2 border-my-dub-100">
             <DeleteRename id={data.id} title={data.title} />
           </div>
-        </div>
+          */}
       </div>
     </>
   );

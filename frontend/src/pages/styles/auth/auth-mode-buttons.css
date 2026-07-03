@@ -1,19 +1,18 @@
 .auth-buttons-bg {
     position: relative;
     display: inline-flex;
-    gap: 130px;
+    gap: 100px;
     padding: 10px;
     border-radius: 50px;
     background-color: var(--accent-light);
     font-size: var(--font-medium);
-    font-weight: bold;
     z-index: 0;
 }
 
 .auth-buttons {
     display: inline-flex;
     gap: 130px;
-    padding: 15px 20px 10px 20px;
+    padding: 10px 20px;
 }
 
 .sings-button {
@@ -21,7 +20,6 @@
     align-items: center;
     color: transparent;
     text-shadow: 0 0 3px transparent;
-    word-spacing: 0.2em;
     transition: all 500ms ease-in-out 150ms;
     z-index: 3;
 }
@@ -36,17 +34,13 @@
     text-shadow: 0 0 3px var(--accent-dark);
 }
 
-.sings-button span {
-    line-height: 100%;
-}
-
 .active-bg {
     box-sizing: border-box;
     position: absolute;
     top: 10px;
     left: 10px;
     bottom: 10px;
-    width: 5.18em;
+    width: 5.63em;
     padding: 30px;
     border-radius: 40px;
     background-color: var(--accent-dark);
@@ -59,6 +53,6 @@
 }
 
 .sing-up-active {
-    margin: 0 0 0 56.53%;
-    width: 5.2em;
+    margin: 0 0 0 57%;
+    width: 5.42em;
 }

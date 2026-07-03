@@ -1,0 +1,16 @@
+@keyframes animate-task-slide {
+    from {
+      opacity: 0;
+      transform: translateX(10%);
+      display: box;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      display: none;
+    }
+  }
+
+.animate-task-slide {
+    animation: animate-task-slide 450ms ease-in-out;
+}

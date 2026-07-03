@@ -8,7 +8,6 @@
   text-align: center;
   transition: all;
   transition-duration: 250ms;
-  font-weight: bold;
 }
 
 .button:hover {
@@ -30,7 +29,7 @@
   border-radius: clamp(10px, 2vw, 30px);
   background-color: var(--sematic-good-light);
   color: var(--sematic-good-dark);
-  text-shadow: 0 1px 3px var(--sematic-good-dark);
+  text-shadow: 0 0 3px var(--sematic-good-dark);
   text-align: center;
   transition: all;
   transition-duration: 250ms;
@@ -54,7 +53,7 @@
   border-radius: clamp(10px, 2vw, 30px);
   background-color: var(--sematic-bad-light);
   color: var(--sematic-bad-dark);
-  text-shadow: 0 1px 3px var(--sematic-bad-dark);
+  text-shadow: 0 0 3px var(--sematic-bad-dark);
   text-align: center;
   transition: all;
   transition-duration: 250ms;

@@ -4,7 +4,6 @@
   height: 100%;
   font-size: var(--font-medium);
   color: var(--neutral);
-  font-weight: bold;
 }
 
 .create-folder-input-box {
@@ -20,8 +19,8 @@
 }
 
 .create-folder-input {
-  line-height: 100%;
-  padding: 7px 5px 3px 5px;
+  /* line-height: 100%; */
+  padding: 10px 5px;
   border-radius: 10px;
   border: solid 2px var(--secondary);
   transition: all 400ms ease-in-out;

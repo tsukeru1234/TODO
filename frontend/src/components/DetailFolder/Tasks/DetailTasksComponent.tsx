@@ -17,21 +17,21 @@ const DetailTasksComponent = ({ detailData }: DetailFolderTypes) => {
 
   return (
     <>
-      <div className="w-full flex flex-col overflow-auto h-full">
+      <div className="tasks-main-box">
         <FilteredReadyStatus data={detailData} />
       </div>
-      {delStat ? (
+      {/* {delStat ? (
         <DeleteTasksButton id={detailData.id} />
-      ) : (
-        <div className="w-full flex gap-2">
-          <Link to="/todo/$id/create-task" className="flex justify-center w-full">
-            <Button type="button">
-              <span className="text-xl">+</span>
-            </Button>
+      ) : ( */}
+      <div className="task-buttons-box">
+        <Button type="button">
+          <Link to="/todo/$id/create-task">
+            <span className="">Create task</span>
           </Link>
-          <div className="text-sematic-bad-text bg-sematic-bad border-sematic-bad-border border-3 grid place-content-center rounded-2xl px-5"><DeleteTasks /></div>
-        </div>
-      )}
+        </Button>
+        {/* <DeleteTasks /> */}
+      </div>
+      {/* )} */}
     </>
   );
 };

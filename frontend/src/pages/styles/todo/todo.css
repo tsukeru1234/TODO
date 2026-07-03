@@ -1,4 +1,5 @@
 @import "../../../components/Folders/styles/folders.css";
+@import "../../../components/DetailFolder/style/detail-folder.css";
 
 /* !grid cols 11 */
 .todo-main {
@@ -6,23 +7,28 @@
   inset: 10px;
   display: grid;
   gap: 20px;
+  min-height: 0;
   padding: 10px;
   grid-template-columns: minmax(0, 2fr) minmax(0, 9fr);
   grid-template-rows: 1fr;
   border: solid 10px var(--secondary);
   border-radius: 30px;
+  box-sizing: border-box;
 }
 
 .todo-folders {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 
 .todo-children {
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
   border: solid 5px var(--secondary);
   border-radius: 20px;
 }

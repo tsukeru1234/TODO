@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
-import DangerButton from "../Buttons/BadButton";
 import { useBulkDeleteTasks } from "../../api/tasks";
 import { deleteStatus, idsDelList } from "./Tasks/util/taskStore";
+import BadButton from "../Buttons/BadButton";
 
 const DeleteTasksButton = ({ id }: { id: string }) => {
   const [, setDelStat] = useAtom(deleteStatus);
@@ -13,9 +13,9 @@ const DeleteTasksButton = ({ id }: { id: string }) => {
     setDelStat(false);
   };
   return (
-    <DangerButton type="button" click={handleBulkDel}>
+    <BadButton type="button" click={handleBulkDel}>
       <span>{isPending ? "Удаление" : "Удалить выбранные"}</span>
-    </DangerButton>
+    </BadButton>
   );
 };
 

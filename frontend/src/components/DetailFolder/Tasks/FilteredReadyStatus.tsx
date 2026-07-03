@@ -14,8 +14,9 @@ const FilteredReadyStatus = ({ data }: { data: folderData }) => {
   };
   const filteredTasks = filterTasksData(data.tasks, status);
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex px-3 justify-between relative animate-filter-com">
+    // !!!
+    <div className="">
+      {/* <div className="flex px-3 justify-between relative animate-filter-com">
         <button
           className={
             status == "ALL"
@@ -46,10 +47,10 @@ const FilteredReadyStatus = ({ data }: { data: folderData }) => {
         >
           ✗
         </button>
-      </div>
+      </div> */}
       <div
         key={status}
-        className="w-full h-full flex flex-col gap-2 animate-task-slide"
+        className="tasks-list animate-task-slide"
       >
         {delStat ? (
           <DeleteTaskList tasks={filteredTasks} />

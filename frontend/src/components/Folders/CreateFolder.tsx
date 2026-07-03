@@ -20,7 +20,7 @@ const CreateFolder = () => {
         }}
       >
         <div className="create-folder-input-box">
-          <label className="">
+          <label>
             Title
             <input
               type="text"
@@ -30,7 +30,7 @@ const CreateFolder = () => {
               required
             />
           </label>
-          <label className="">
+          <label>
             Description
             <textarea
               rows={4}

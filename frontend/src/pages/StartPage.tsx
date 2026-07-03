@@ -27,10 +27,10 @@ export const StartPage = () => {
               <div className="start-page-demonstration-todo-tasks">
                 <div className={`start-page-demonstration-task ${ready ? "color-ready" : "color-not-ready"}`}>
                   <span>Task1</span>
-                  <label className={`task-bg ${ready ? "ready" : "not-ready"}`}>
+                  <label className={`demonstration-task-bg ${ready ? "ready" : "not-ready"}`}>
                     <button
                       onClick={() => setReady((prev) => !prev)}
-                      className={`task-slider ${ready ? "task-ready" : "task-not-ready"}`}
+                      className={`demonstration-task-slider ${ready ? "demonstration-task-ready" : "demonstration-task-not-ready"}`}
                     >
                       {ready ? "✓" : "✗"}
                     </button>
@@ -39,18 +39,18 @@ export const StartPage = () => {
                 <div className={`start-page-demonstration-task ${ready2 ? "color-ready" : "color-not-ready"}`}>
                   <span>Task2</span>
                   <label
-                    className={`task-bg ${ready2 ? "ready" : "not-ready"}`}
+                    className={`demonstration-task-bg ${ready2 ? "demonstration-ready" : "demonstration-not-ready"}`}
                   >
                     <button
                       onClick={() => setReady2((prev) => !prev)}
-                      className={`task-slider ${ready2 ? "task-ready" : "task-not-ready"}`}
+                      className={`demonstration-task-slider ${ready2 ? "demonstration-task-ready" : "demonstration-task-not-ready"}`}
                     >
                       {ready2 ? "✓" : "✗"}
                     </button>
                   </label>
                 </div>
               </div>
-              <div className="task-buttons">
+              <div className="demonstration-task-buttons">
                 <GoodButton type="button">
                   <span>add</span>
                 </GoodButton>

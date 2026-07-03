@@ -1,59 +1,78 @@
-.start-page-demonstration-todo-outside {
+.tasks-main-box {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: clamp(40px, 6vh, 100px);
-  max-height: 100%;
-  border-radius: 30px;
-  padding: 20px 25px;
-  border: solid 10px color-mix(in srgb, var(--accent-light) 20%, transparent);
-  transition: all 600ms ease-in;
+  width: 100%;
+  height: 90%;
+  overflow: auto;
 }
 
-.start-page-demonstration-todo-tasks {
+.tasks-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: clamp(20px, 4vw, 40px);
+  gap: 8px;
 }
 
-.start-page-demonstration-task {
+.task-buttons-box {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  width: 100%;
+  font-size: var(--font-extra-small);
+}
+
+.task {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
   border-radius: 30px;
-  padding-left: 20px;
+  padding: 0 0 0 15px;
   color: transparent;
   background-color: transparent;
+  font-size: var(--font-extra-small);
   transition: all 350ms ease-in;
 }
 
-.color-ready {
+.task-color-ready {
   color: var(--accent-light);
   background-color: color-mix(in srgb, var(--accent-light) 10%, transparent);
 }
 
-.color-not-ready {
+.task-color-not-ready {
   color: var(--neutral);
   background-color: color-mix(in srgb, var(--neutral) 20%, transparent);
 }
 
-
-.demonstration-task-bg {
+.task-bg {
   position: relative;
   display: flex;
   justify-content: start;
+  align-items: center;
   height: 100%;
-  width: 120px;
+  width: 65px;
   border-radius: 30px;
   transition: background-color 250ms ease-in-out;
 }
 
-.demonstration-not-ready {
+.task-priority-title-box {
+  display: flex;
+  gap: 12px;
+}
+
+.task-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  padding-right: 5px;
+}
+
+.not-ready {
   background-color: var(--sematic-bad-dark);
 }
 
-.demonstration-task-slider {
+.task-slider {
   height: 100%;
   width: 50%;
   margin: 0 0 0 0;
@@ -62,28 +81,19 @@
   transition: all 250ms ease-in-out;
 }
 
-.demonstration-task-not-ready {
+.task-not-ready {
   background-color: var(--sematic-bad-light);
   color: var(--sematic-bad-dark);
   text-shadow: 0 4px 8px var(--sematic-bad-dark);
 }
 
-.demonstration-ready {
+.ready {
   background-color: var(--sematic-good-dark);
 }
 
-.demonstration-task-ready {
+.task-ready {
   margin: 0 0 0 50%;
   background-color: var(--sematic-good-light);
   color: var(--sematic-good-dark);
   text-shadow: 0 4px 8px var(--sematic-good-dark);
-}
-
-.demonstration-task-buttons {
-  display: flex;
-  align-items: end;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  font-size: 40px;
 }

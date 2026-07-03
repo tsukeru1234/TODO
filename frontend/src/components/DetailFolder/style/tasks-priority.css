@@ -1,0 +1,59 @@
+.task-color-ready-priority-1 {
+  color: #bc7170;
+  background-color: color-mix(in srgb, #bc7170 10%, transparent);
+}
+
+.task-color-not-ready-priority-1 {
+  color: #e7c5c3;
+  background-color: color-mix(in srgb, #bc7170 20%, transparent);
+}
+
+/* #bc7170  #efd8d7 */
+
+.task-color-ready-priority-2 {
+  color: #aaaa5a;
+  background-color: color-mix(in srgb, #aaaa5a 10%, transparent);
+}
+
+.task-color-not-ready-priority-2 {
+  color: #f8f5d5;
+  background-color: color-mix(in srgb, #aaaa5a 20%, transparent);
+}
+
+/* #e3e380 #f8f5d5 */
+
+.task-color-ready-priority-3 {
+  color: #8ab36e;
+  background-color: color-mix(in srgb, #8ab36e 10%, transparent);
+}
+
+.task-color-not-ready-priority-3 {
+  color: #d8e6cd;
+  background-color: color-mix(in srgb, #8ab36e 20%, transparent);
+}
+
+/* #8ab36e #d8e6cd */
+
+.task-color-ready-priority-4 {
+  color: #beabd7;
+  background-color: color-mix(in srgb, #beabd7 10%, transparent);
+}
+
+.task-color-not-ready-priority-4 {
+  color: #e7dff0;
+  background-color: color-mix(in srgb, #beabd7 20%, transparent);
+}
+
+/* #beabd7 #e7dff0 */
+
+.task-color-ready-priority-5 {
+  color: #7bb39e;
+  background-color: color-mix(in srgb, #7bb39e 10%, transparent);
+}
+
+.task-color-not-ready-priority-5 {
+  color: #d3e6de;
+  background-color: color-mix(in srgb, #7bb39e 20%, transparent);
+}
+
+/* #7bb39e #d3e6de */
