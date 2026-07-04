@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import type { Tasks } from "../../../@types/types_tasks";
 import List from "../../List";
-import { idsDelList, priorityColor } from "./util/taskStore";
+import { idsDelList } from "./util/taskStore";
 
 const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
   const [idsTasksDelList, setTasksIdsDelList] = useAtom(idsDelList);
@@ -9,7 +9,6 @@ const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
     <List
       data={tasks.sort((a, b) => a.priority - b.priority)}
       render={(item: Tasks) => {
-        const { bg, txt } = priorityColor(item.priority);
         const handleAdd = () => {
           setTasksIdsDelList((prev) => (prev ? [...prev, item.id] : [item.id]));
         };
@@ -26,8 +25,8 @@ const DeleteTaskList = ({ tasks }: { tasks: Tasks[] }) => {
             <span
               className={
                 item.ready_status
-                  ? `bg-my-green-600/3 ${txt} px-3 py-0.5 text-center rounded-l-xl`
-                  : `${bg} ${txt} px-3 py-0.5 text-center rounded-l-xl`
+                  ? `bg-my-green-600/3  px-3 py-0.5 text-center rounded-l-xl`
+                  :  "px-3 py-0.5 text-center rounded-l-xl"
               }
             >
               {item.priority}

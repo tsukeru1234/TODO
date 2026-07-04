@@ -1,10 +1,12 @@
 import { Link, useParams } from "@tanstack/react-router";
 import { useCreateTasks } from "../../../api/tasks";
 import DangerButton from "../../Buttons/BadButton";
-import Button from "../../Buttons/Button";
+import GoodButton from "../../Buttons/GoodButton";
+import { useState } from "react";
 
 const CreateTaskComponent = () => {
   const { id } = useParams({ from: "/todo/$id" });
+  const [priority, setPriority] = useState<number>(1);
   const { mutate, isPending } = useCreateTasks(id);
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,47 +15,86 @@ const CreateTaskComponent = () => {
     mutate(data);
   };
   return (
-    <>
+    <div className="create-task-box">
       <form
-        className="text-3xl text-my-green-500 font-bold grid place-items-center h-full animate-open-creation-window"
+        className="create-task-input-box"
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <div className="flex flex-col gap-5">
-          <label className="flex flex-col gap-3">
+        <div className="create-task-input-box ">
+          <label className="create-task-input-box-label">
             Title
             <input
               type="text"
               name="title"
-              className="pl-2 border-2 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-green-100 focus:outline-none rounded-xl p-1"
+              className="create-task-input"
               placeholder="Название"
+              autoFocus={true}
+              required
             />
           </label>
-          <label className="flex flex-col gap-3">
+          <div className="create-task-input-box-label">
             Priority
-            <input
-              type="number"
-              max="5"
-              min="1"
-              defaultValue="1"
-              name="priority"
-              className="pl-2 border-2 border-my-green-100 bg-my-dark-glass transition-all duration-250 focus:text-my-green-600 focus:border-my-dub-500 focus:bg-my-green-600/40 focus:scale-102 focus:shadow-2xl focus:shadow-my-green-100 focus:outline-none rounded-xl p-1"
-            />
-          </label>
-          <div className="flex justify-end gap-4">
-            <Button type="submit">
-              <span>{isPending ? "Создание..." : "Создать"}</span>
-            </Button>
+            <div className="create-task-priority-box">
+              <button
+                type="button"
+                className={`priority-change-color ${priority === 1 ? "task-color-not-ready-priority-1" : "task-color-ready-priority-1"}`}
+                onClick={() => setPriority(1)}
+              >
+                1
+              </button>
+              <button
+                type="button"
+                className={`priority-change-color ${priority === 2 ? "task-color-not-ready-priority-2" : "task-color-ready-priority-2"}`}
+                onClick={() => setPriority(2)}
+              >
+                2
+              </button>
+              <button
+                type="button"
+                className={`priority-change-color ${priority === 3 ? "task-color-not-ready-priority-3" : "task-color-ready-priority-3"}`}
+                onClick={() => setPriority(3)}
+              >
+                3
+              </button>
+              <button
+                type="button"
+                className={`priority-change-color ${priority === 4 ? "task-color-not-ready-priority-4" : "task-color-ready-priority-4"}`}
+                onClick={() => setPriority(4)}
+              >
+                4
+              </button>
+              <button
+                type="button"
+                className={`priority-change-color ${priority === 5 ? "task-color-not-ready-priority-5" : "task-color-ready-priority-5"}`}
+                onClick={() => setPriority(5)}
+              >
+                5
+              </button>
+              <input
+                type="number"
+                max="5"
+                min="1"
+                value={priority}
+                name="priority"
+                className="num"
+              />
+            </div>
+          </div>
+          <div className="create-task-button-box">
+            <GoodButton type="submit">
+              <span>{isPending ? "Creating..." : "Create"}</span>
+            </GoodButton>
             <Link from="/" to={`todo/${id}`}>
               <DangerButton type="button">
-                <span>Отмена</span>
+                <span>Back</span>
               </DangerButton>
             </Link>
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

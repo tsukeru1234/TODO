@@ -1,6 +1,7 @@
 @import "./tasks.css";
 @import "./tasks-animate.css";
 @import "./tasks-priority.css";
+@import "./create-task.css";
 
 .detail-folder-main-box {
   display: grid;

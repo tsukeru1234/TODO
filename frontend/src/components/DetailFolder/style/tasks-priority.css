@@ -35,16 +35,16 @@
 /* #8ab36e #d8e6cd */
 
 .task-color-ready-priority-4 {
-  color: #beabd7;
-  background-color: color-mix(in srgb, #beabd7 10%, transparent);
+  color: #a08cc8;
+  background-color: color-mix(in srgb, #a08cc8 10%, transparent);
 }
 
 .task-color-not-ready-priority-4 {
   color: #e7dff0;
-  background-color: color-mix(in srgb, #beabd7 20%, transparent);
+  background-color: color-mix(in srgb, #a08cc8 20%, transparent);
 }
 
-/* #beabd7 #e7dff0 */
+/* #a08cc8 #e7dff0 */
 
 .task-color-ready-priority-5 {
   color: #7bb39e;

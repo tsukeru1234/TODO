@@ -58,6 +58,9 @@
 .task-priority-title-box {
   display: flex;
   gap: 12px;
+  overflow: hidden;
+  flex: 1;
+  padding-right: 5px;
 }
 
 .task-title {

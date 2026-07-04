@@ -27,6 +27,7 @@ const CreateFolder = () => {
               name="title"
               placeholder="Folder name"
               className="create-folder-input"
+              autoFocus={true}
               required
             />
           </label>

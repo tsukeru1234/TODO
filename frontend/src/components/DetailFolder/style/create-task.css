@@ -1,0 +1,64 @@
+.create-task-box {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.create-task-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-size: var(--font-small);
+  color: var(--neutral);
+}
+
+.create-task-input-box-label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.create-task-input {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: solid 2px var(--secondary);
+  transition: all 400ms ease-in-out;
+}
+
+.create-task-input:focus {
+  scale: 102% 102%;
+  border: solid 3px var(--accent-dark);
+  background-color: var(--accent-dark);
+  color: var(--secondary);
+  outline: none;
+}
+
+.num {
+  display: none;
+}
+
+.create-task-priority-box {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: solid 2px color-mix(in srgb, var(--secondary) 40%, transparent); 
+}
+
+.create-task-priority-box button {
+  padding: 0 0.65em;
+  border-radius: 30px;
+}
+
+.priority-change-color {
+  transition: all 450ms ease-in-out;
+}
+
+.create-task-button-box {
+  display: flex;
+  gap: 25px;
+  justify-content: end;
+}
